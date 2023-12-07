@@ -18,15 +18,12 @@ export default function Home() {
 
 
 
-    <div className='bg-zinc-950' style={{ width: '100vw' }} >
+    <div className='bg-zinc-950' style={{ width: '100vw' , height: '100vh'}} >
 
       <div className='overflow-none'>
         <Navbar />
         <div className="flex justify-between" style={{padding: '0vw 2.8vw'}}>
           <div>
-            <CommunityPlaylist />
-            <CommunityPlaylist />
-            <CommunityPlaylist />
             <CommunityPlaylist />
           </div>
           <Sidebar />
