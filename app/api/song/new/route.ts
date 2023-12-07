@@ -1,5 +1,5 @@
-import { connectToDB } from "@/utils/database"
-import Song from "@/models/song"
+import { connectToDB } from "@utils/database"
+import Song from "@models/song"
 import { NextApiRequest } from "next"
 
 export const POST = async(req: Request) => {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
-import { song } from '@/types'
+import { song } from '@types'
 
 const SongList = ({data, search}: {data: song[]; search: string}) => {
 
@@ -40,9 +40,9 @@ const Search = () => {
     }, [])
 
     return (
-        <div>
+        <div className='flex justify-center flex-col items-center'>
             <br />
-            <input type="text" value={search} onChange={handleSearchChange} />
+            <input type="text" value={search} onChange={handleSearchChange} style={{border: '1px solid black'}}/>
 
             <br /><br /><br />
 

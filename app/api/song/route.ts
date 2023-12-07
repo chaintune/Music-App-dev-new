@@ -1,5 +1,5 @@
-import Song from "@/models/song"
-import { connectToDB } from "@/utils/database"
+import Song from "@models/song"
+import { connectToDB } from "@utils/database"
 
 // changes @models -> @/models
 

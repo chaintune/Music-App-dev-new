@@ -3,11 +3,12 @@
 import React from 'react'
 import Image from 'next/image'
 // import shuffle from '../app/assets/shuffle.svg'
-import pause from '../app/assets/pause.svg'
+import pause from '@assets/pause.svg'
 // import repeat from '../app/assets/repeat.svg'
 // import skip from '../app/assets/skip_next.svg'
-import skipprev from '../app/assets/skip_previous.svg'
+import skipprev from '@assets/skip_previous.svg'
 import { FormEvent, useEffect, useState, useRef } from 'react';
+import bg from '@assets/bg.svg'
 
 
 const playSong = () => {
@@ -91,7 +92,7 @@ const playSong = () => {
 
                     <div className='flex items-center'>
                         <div className="mx-5 absolute bottom-10" style={{ height: "96px", width: "96px" }}>
-                            <img className="rounded-xl" src="/mjstar1.jpg" style={{ height: "100%", width: "100%" }}></img>
+                            <Image className="rounded-xl" src={bg} style={{height:"100%",width:"100%"}} alt=''/>
                         </div>
                         <div className='absolute left-32'>
                             <p className='text-white font-medium'>Left Hand Free</p>

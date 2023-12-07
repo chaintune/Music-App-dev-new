@@ -1,13 +1,13 @@
 
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import CommunityPlaylist from '@/components/communityPlaylist'
-import PlaySong from '@/components/playSong'
+import CommunityPlaylist from '@components/communityPlaylist'
+import PlaySong from '@components/playSong'
 
 // import Image from 'next/image'
 // import { Inter } from 'next/font/google'
-import Navbar from '@/components/navbar'
-import Sidebar from '@/components/sidebar'
+import Navbar from '@components/navbar'
+import Sidebar from '@components/sidebar'
 
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -18,11 +18,11 @@ export default function Home() {
 
 
 
-    <div className='bg-zinc-950' style={{ width: '100%' }} >
+    <div className='bg-zinc-950' style={{ width: '100vw' }} >
 
-      <div className='overflow-auto'>
+      <div className='overflow-none'>
         <Navbar />
-        <div className="flex justify-around" style={{ marginRight: '20px' }}>
+        <div className="flex justify-between" style={{padding: '0vw 2.8vw'}}>
           <div>
             <CommunityPlaylist />
             <CommunityPlaylist />

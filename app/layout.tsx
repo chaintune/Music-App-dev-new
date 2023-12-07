@@ -15,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/idq4qqe.css" />
+      </head>
+      <body className={inter.className} style={{fontFamily: 'Aileron'}}>{children}</body>
     </html>
   )
 }
