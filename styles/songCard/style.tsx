@@ -9,28 +9,21 @@ export const InnerStackedComponents = styled.div`
     margin-right: 700px;
     position: absolute;
 `;
-export const Wrapper = styled.div`
-    position: absolute;
-    background-color: rgb(30, 30, 30);
-    margin-top: 300px;
-    margin-left: 200px;
-    width: 1012px;
-    height: 272px;
-    border-radius: 24px;
-    border: 1px solid #FFF;
-    box-shadow: 2px 4px 48px 0 rgba(0, 0, 0, 0.50);
-    backdrop-filter: blur(60px);
-`
+
 export const SongContainer = styled.div`
     position: absolute;
-    margin-top: 300px;
-    margin-left: 200px;
+
     width: 1012px;
     height: 272px;
     border-radius: 24px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    border: 1px solid #FFF;
+    box-shadow: 2px 4px 48px 0 rgba(0, 0, 0, 0.50);
+    backdrop-filter: blur(60px);
+ 
+    
     background: linear-gradient(159deg, rgba(28, 30, 34, 0.33) 1.89%, rgba(31, 34, 40, 0.50) 89.55%);
     font-family: Aileron;
 `;

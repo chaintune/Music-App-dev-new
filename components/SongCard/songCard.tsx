@@ -12,7 +12,7 @@ import {
     SongText,
     StackedComponents,
     TopBar,
-    Wrapper
+
 } from "@styles/songCard/style";
 import banner from "@assets/banner.svg"
 import pocket from "@assets/pocket.svg"
@@ -24,7 +24,7 @@ const songTitle = 'I am a Song';
 const SongCard = () => {
     return (
         <StackedComponents>
-            <Wrapper/>
+
             <SongContainer>
                 <InnerStackedComponents>
                     <SongBanner src={banner} alt={songTitle}/>
@@ -51,8 +51,6 @@ const SongCard = () => {
     );
 };
 
-const NextImageComponent = styled(NextImage)`
-    /* Add your styles here if needed */
-`;
+const NextImageComponent = styled(NextImage)``;
 
 export default SongCard;
