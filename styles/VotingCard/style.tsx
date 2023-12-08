@@ -34,6 +34,7 @@ export const VotesContainer = styled.div`
 export const VotesText = styled.p`
   font-size: 1.3vw;
   opacity: 40%;
+  padding-top: 0.3vw;
 `;
 
 export const GridContainer = styled.div`
@@ -51,16 +52,22 @@ export const FlexColumn = styled.div`
   margin-left: 0.2vw;
 `;
 
+
+export const VotingColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+  background : rgba(255, 255, 255, 0.10);
+  border-radius: 1vw;
+  padding: 1vw 1vw;
+`;
+
+
 export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.5vw;
 `;
-
-// const SVGContainer = styled(Image)`
-//     width: 4.4vw;
-//     height: 4.4vw;
-// `;
 
 export const StyledImage = styled.img`
   width: 11vw;
@@ -74,7 +81,7 @@ export const TitleText = styled.p`
 
 export const SubTitleText = styled.p`
   font-size: 0.97vw;
-  margin: 1vw 0;
+  margin: 0.5vw 0 0 0;
   opacity: 50%;
 `;
 

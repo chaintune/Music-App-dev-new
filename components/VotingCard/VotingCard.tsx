@@ -1,7 +1,6 @@
 'use client'
-import { MainContainer, HeaderContainer, Title, VotesContainer, VotesText, GridContainer, FlexColumn, FlexRow, TitleText, SubTitleText, StyledImage, SongTitleText, SongDetailsText, VoteCountText, StyledModal, ModalContent, SvgButton } from '@styles/VotingCard/style';
+import { MainContainer, HeaderContainer, Title, VotesContainer, VotesText, GridContainer, FlexColumn, FlexRow, TitleText, SubTitleText, StyledImage, SongTitleText, SongDetailsText, VoteCountText, StyledModal, ModalContent, SvgButton, VotingColumn } from '@styles/VotingCard/style';
 import { useReducer } from 'react';
-import styled from 'styled-components';
 
 const StyledComponentsExample = () => {
 
@@ -72,7 +71,7 @@ const StyledComponentsExample = () => {
         </VotesContainer>
       </HeaderContainer>
       <GridContainer>
-        <FlexColumn>
+        <VotingColumn>
           <FlexRow>
               <svg width="4vw" height="4vw" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" pointerEvents="none">
                 <circle cx="32" cy="32" r="32" fill="url(#paint0_linear_100_889)" />
@@ -94,9 +93,9 @@ const StyledComponentsExample = () => {
             <TitleText>Next Voting Round <br /> in 1d:23h:48m</TitleText>
           </FlexRow>
           <SubTitleText>Top 3 songs from the list will be added to the playlist when this round ends. Learn More</SubTitleText>
-        </FlexColumn>
+        </VotingColumn>
         <FlexRow>
-          <StyledImage src="https://v1.tailwindcss.com/img/card-top.jpg" alt="" />
+          <StyledImage src="http://localhost:3000/_next/static/media/playlistCover.f385e57c.svg" alt="" />
           <FlexColumn>
             <SongTitleText>Are You Bored Yet (feat. Clairo)</SongTitleText>
             <SongDetailsText>Wallows, Clairo</SongDetailsText>
@@ -104,7 +103,7 @@ const StyledComponentsExample = () => {
           </FlexColumn>
         </FlexRow>
         <FlexRow>
-          <StyledImage src="https://v1.tailwindcss.com/img/card-top.jpg" alt="" />
+          <StyledImage src="http://localhost:3000/_next/static/media/playlistCover.f385e57c.svg" alt="" />
           <FlexColumn>
             <SongTitleText>Are You Bored Yet (feat. Clairo)</SongTitleText>
             <SongDetailsText>Wallows, Clairo</SongDetailsText>

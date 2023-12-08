@@ -11,6 +11,7 @@ interface TableProps {
     updatedAt: string;
     duration: string;
   }
+  
 const VotingCard: React.FC<TableProps> =({sno,title,artist,album,updatedAt,duration})=>{
     return (
         <Row>
