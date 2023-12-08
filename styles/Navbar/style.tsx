@@ -5,12 +5,14 @@ export const Nav = styled.div`
     padding: 3.721vh 2.797vw;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     /* background-color: #090A0D; */
 `
 
 export const Left = styled.div`
     display: flex;
-    gap: 1.678vw;
+    gap: 0.839vw;
+    align-items: center;
 `
 
 export const Tab = styled.div`
@@ -24,6 +26,7 @@ export const Tab = styled.div`
 export const Right = styled.div`
     display: flex;
     gap: 1.119vw;
+    align-items: center;
 `
 
 export const Wrap1 = styled.div`
