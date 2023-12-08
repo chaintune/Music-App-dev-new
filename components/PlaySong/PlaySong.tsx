@@ -57,10 +57,11 @@ const playSong = () => {
         durationsec = dur < 10 ? `0${dur}` : `${dur}`;
     }
 
-    const handleVolumeChange = (e) => {
+    const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (audioRef.current) {
             const newVolume = parseFloat(e.target.value);
-            setVolume(e.target.value);
+            const target = e.target as HTMLInputElement
+            setVolume(parseInt(target.value));
             audioRef.current.volume = newVolume;
             setvolvalue(newVolume)
 
@@ -121,18 +122,19 @@ const playSong = () => {
         background: `linear-gradient(to right, white ${volume}%, black ${volume}%)`,
     };
 
-    const handleSeekBarChange = (e) => {
+    const handleSeekBarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (audioRef.current) {
-            const newTime = (e.target.value / 100) * audioRef.current.duration;
+            const newTime = (parseInt(e.target.value) / 100) * audioRef.current.duration;
             audioRef.current.currentTime = newTime;
-            setProgress(e.target.value);
+            setProgress(parseInt(e.target.value));
 
             // settime(newTime)
         }
     };
-    const handleBarClick = (e) => {
+    const handleBarClick = (e: React.MouseEvent<HTMLInputElement>) => {
         if (audioRef.current) {
-            const barRect = e.target.getBoundingClientRect();
+            const target = e.target as HTMLElement;
+            const barRect = target.getBoundingClientRect();
             const clickX = e.clientX - barRect.left;
             const barWidth = barRect.width;
             const newProgress = (clickX / barWidth) * 100;
