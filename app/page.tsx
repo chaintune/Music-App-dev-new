@@ -9,15 +9,10 @@ import PlaySong from '@components/playSong'
 import Navbar from '@components/navbar'
 import Sidebar from '@components/sidebar'
 
-
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-
-
-
-
     <div className='bg-zinc-950' style={{ width: '100vw' , height: '100vh'}} >
 
       <div className='overflow-none'>
@@ -29,8 +24,6 @@ export default function Home() {
           <Sidebar />
         </div>
       </div>
-
-
       <div className='fixed left-0 right-0 bottom-0 flex justify-center items-center'>
         <PlaySong />
       </div>

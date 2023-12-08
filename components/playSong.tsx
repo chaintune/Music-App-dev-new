@@ -39,6 +39,8 @@ const playSong = () => {
             setProgress(newProgress);
         }
     };
+    
+    // @ts-ignore
     const handleSeekBarChange = (e) => {
         if (audioRef.current) {
             const newTime = (e.target.value / 100) * audioRef.current.duration;
@@ -46,6 +48,8 @@ const playSong = () => {
             setProgress(e.target.value);
         }
     };
+
+    // @ts-ignore
     const handleBarClick = (e) => {
         if (audioRef.current) {
             const barRect = e.target.getBoundingClientRect();
