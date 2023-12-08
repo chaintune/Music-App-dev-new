@@ -1,4 +1,5 @@
 'use client'
+import { useReducer } from "react";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
@@ -26,9 +27,9 @@ const Input = styled.input`
     font-size: 1vw;
     border-radius: 2vw;
     width: 100%;
-    /* &:focus {
+    &:focus {
         outline: none;
-    } */
+    }
 `;
 
 const SvgContainer = styled.div`
@@ -47,11 +48,13 @@ const FlexContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 4px;
+  flex-direction: column;
 `;
 
 const Button = styled.button`
   display: inline-flex;
   gap: 1vw;
+  font-size: 0.95vw;
   border-radius: 20vw; /* Use a high value for rounded shape */
   padding: 0.75rem 1rem;
   align-items: center;
@@ -77,7 +80,6 @@ linear-gradient(163.58deg, rgba(255, 255, 255, 0.06) -2.71%, rgba(255, 255, 255,
 const Dropdown = styled.div`
   position: relative;
   z-index: 10;
-  display: none;
   flex-direction: column;
   border-radius: 0.375rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -157,9 +159,55 @@ const TableHeaderCell = styled.th`
   padding: 1rem;
 `;
 
-
 const PlaylistTable = () => {
+
+    const initialState = {
+        defaultValue: "Sort by: Most Recent",
+        dropdown: false,
+    }
+
+    const reducer = (state: any, action: { type: any; payload: any; }) => {
+        switch (action.type) {
+            case 'SET_FILTER':
+                return {
+                    ...state,
+                    defaultValue: action.payload,
+                    dropdown: false,
+                }
+            case 'TOGGLE_DROPDOWN':
+                return {
+                    ...state,
+                    dropdown: !state.dropdown,
+                };
+            default:
+                return state
+        }
+    }
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    const toggleDropdown = () => {
+        console.log(state.dropdown);
+        dispatch({
+            type: 'TOGGLE_DROPDOWN',
+            payload: undefined
+        })
+    }
+
+    const handleOptionChange = (value: any) => {
+        console.log(value);
+        dispatch({ type: 'SET_FILTER', payload: value })
+    }
+
+    const options = [
+        "Most Recent",
+        "Most Popular",
+        "Top Rated",
+        "Most Played",
+    ]
+
     return (
+
         <MainContainer>
             <TableContainer>
                 <div
@@ -193,9 +241,9 @@ const PlaylistTable = () => {
                         </div>
                     </div>
                     <FlexContainer>
-                        <Button id="dropdownActionButton" data-dropdown-toggle="dropdownAction">
-                            <span className="sr-only">Action button</span>
-                            Sort by: Most Recent
+                        <Button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" onClick={toggleDropdown}>
+                            <span className="sr-only" onChange={handleOptionChange}>Action button</span>
+                            {state.defaultValue}
                             <svg
                                 className="w-3 h-3 ml-2"
                                 aria-hidden="true"
@@ -207,23 +255,23 @@ const PlaylistTable = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                             </svg>
                         </Button>
-
-                        <Dropdown id="dropdownAction">
-                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200">
-                                <li>
-                                    <ListItem href="#">Reward</ListItem>
-                                </li>
-                                <li>
-                                    <ListItem href="#">Promote</ListItem>
-                                </li>
-                                <li>
-                                    <ListItem href="#">Activate account</ListItem>
-                                </li>
-                            </ul>
-                            <div>
-                                <DeleteUserLink href="#">Delete User</DeleteUserLink>
+                        {
+                            state.dropdown && (
+                                <div
+                                id="dropdownAction"
+                                className="z-10 absolute overflow-hidden bg-white rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                                // style={{ top: '100%', right: 0 }}
+                            >
+                                <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
+                                    {options.map((option, index) => (
+                                        <li key={index}>
+                                            <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => handleOptionChange(option)}>{option}</a>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-                        </Dropdown>
+                            )
+                        }
                     </FlexContainer>
                 </div>
                 <table
@@ -249,8 +297,34 @@ const PlaylistTable = () => {
                             </TableHeaderCell>
                         </tr>
                     </TableHead>
-                    {/* {songs.map(project => ( */}
+                    {/* {songs.map(song => ( */}
                     <TableBody>
+                        <TableRow>
+                            <TableCell>
+                                01
+                            </TableCell>
+                            <TableCell scope="row">
+                                <div className="flex items-center px-4 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                    <Image
+                                        src="https://practicaltyping.com/wp-content/uploads/2022/01/ayanokoji.jpg"
+                                        alt="Jese image"
+                                    />
+                                    <div className="pl-3">
+                                        <Title>Feel It Still</Title>
+                                        <Subtitle>Portugal. The Man</Subtitle>
+                                    </div>
+                                </div>
+                            </TableCell>
+                            <TableCell>
+                                Woodstock
+                            </TableCell>
+                            <TableCell>
+                                <div className="flex items-center">2 days ago</div>
+                            </TableCell>
+                            <TableCell>
+                                2:43
+                            </TableCell>
+                        </TableRow>
                         <TableRow>
                             <TableCell>
                                 01
@@ -279,8 +353,8 @@ const PlaylistTable = () => {
                         </TableRow>
                     </TableBody>
                 </table>
-            </TableContainer>
-        </MainContainer>
+            </TableContainer >
+        </MainContainer >
     );
 }
 
