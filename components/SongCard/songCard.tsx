@@ -1,9 +1,8 @@
 'use client'
 
-import './playlist.css'
+// import './playlist.css'
 import styled from 'styled-components'
 import NextImage from 'next/image';
-
 
 import {
     AlbumButton, Buttons, InnerStackedComponents, PlayButton,
@@ -48,10 +47,7 @@ const SongCard = () => {
 
                 </SongDetails>
             </SongContainer>
-
         </StackedComponents>
-
-
     );
 };
 

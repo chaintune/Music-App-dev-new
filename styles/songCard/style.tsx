@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import NextImage from "next/image";
 
-
-
 export const StackedComponents = styled.div`
   position: relative;
 `;
+
 export const InnerStackedComponents = styled.div`
     margin-right: 700px;
     position: absolute;
