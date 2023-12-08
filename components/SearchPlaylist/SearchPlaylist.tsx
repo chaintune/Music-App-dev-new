@@ -88,7 +88,6 @@ const VotingCard = ({handleSearchClose}:any) => {
                         Duration
                     </SearchText2>
                     <SearchText2>
-
                     </SearchText2>
                 </InfoBlock>
             </Row>
