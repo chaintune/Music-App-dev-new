@@ -1,5 +1,4 @@
-import CommunityPlaylist from '@components/communityPlaylist'
-import { Layout, NavBar, PlaySong, SideBar } from '@components'
+import { CommunityPlaylist, Layout, NavBar, PlaySong, SideBar } from '@components'
 
 export default function Home() {
   return (
