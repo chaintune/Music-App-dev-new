@@ -2,14 +2,14 @@
 import styled from "styled-components"
 import  Image  from 'next/image';
 export const CardContainer = styled.div`
-    width: 75vw;
+    width: 70.769vw;
     height:fit-content;
     background: rgba(28, 30, 34, 0.8);
     border-radius: 24px;
     padding: 16px;
     display:flex;
     flex-direction:row;
-    margin-bottom:16px;
+    /* margin-bottom:16px; */
 `;
 export const CoverImage = styled(Image)`
     width: 240px;
@@ -125,7 +125,7 @@ export const OptionsWrap = styled.div`
 `
 // voting
 export const CardContainer2 = styled.div`
-    width: 75vw;
+    width: 70.769vw;
     height:fit-content;
     background: rgba(28, 30, 34, 0.8);
     border-radius: 24px;

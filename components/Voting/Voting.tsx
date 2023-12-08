@@ -3,7 +3,7 @@ import  Image  from 'next/image';
 import {CardContainer, Wrap1, Wrap4, Header, VoteCount, Options, OptionsWrap, VotingContainer, VotingCardText1, VotingCardText2, AwardWrap, Award, CardContainer2, Wrap7} from "@styles/playlist/style";
 import expand from '@assets/expand.svg'
 import vote from '@assets/votes.png'
-import VotingCard from './votingCard';
+import VotingCard from '../votingCard';
 const Voting=()=>{
     return (
         <CardContainer2>
