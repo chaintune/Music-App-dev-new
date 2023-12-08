@@ -1,5 +1,5 @@
 import { Layout ,SongCard, PlaylistTable} from "@components";
-import VotingCard from "@components/VotingCard/VotingCard";
+import {VotingCard} from "@components";
 
 const Song_Page = () => {
     return ( 

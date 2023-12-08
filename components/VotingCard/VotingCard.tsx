@@ -1,14 +1,51 @@
 'use client'
-import { MainContainer, HeaderContainer, Title, VotesContainer, VotesText, GridContainer, FlexColumn, FlexRow, TitleText, SubTitleText, StyledImage, SongTitleText, SongDetailsText, VoteCountText } from '@styles/VotingCard/style';
+import { MainContainer, HeaderContainer, Title, VotesContainer, VotesText, GridContainer, FlexColumn, FlexRow, TitleText, SubTitleText, StyledImage, SongTitleText, SongDetailsText, VoteCountText, StyledModal, ModalContent, SvgButton } from '@styles/VotingCard/style';
+import { useReducer } from 'react';
+import styled from 'styled-components';
 
 const StyledComponentsExample = () => {
+
+  const reducer = (state: { modal: any }, action: { type: any }) => {
+    switch (action.type) {
+      case 'TOGGLE_MODAL':
+        return {
+          ...state,
+          modal: !state.modal
+        };
+      default:
+        return state;
+    }
+  }
+
+  const initialState = {
+    modal: false
+  };
+
+  const toggleModal = () => {
+    dispatch({
+      type: 'TOGGLE_MODAL',
+    });
+    console.log(state.modal);
+  }
+
+  const closeModal = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    dispatch({
+      type: 'TOGGLE_MODAL'
+    });
+    console.log(state.modal);
+  }
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   return (
     <MainContainer>
       <HeaderContainer>
         <Title>Comunity Voting</Title>
         <VotesContainer>
           <VotesText>235 Votes Received</VotesText>
-          <svg width="2.5vw" height="2.5vw" viewBox="0 0 48 48" fill="gray" xmlns="http://www.w3.org/2000/svg">
+          <SvgButton onClick={toggleModal} >
+           <svg width="2.5vw" height="2.5vw" viewBox="0 0 48 48" fill="gray" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_b_99_888)">
               <circle cx="24" cy="24" r="24" fill="url(#paint0_linear_99_888)" fill-opacity="0.5" />
               <circle cx="24" cy="24" r="23.5" stroke="url(#paint1_linear_99_888)" stroke-opacity="0.06" />
@@ -30,30 +67,30 @@ const StyledComponentsExample = () => {
                 <stop offset="1" stop-color="white" stop-opacity="0" />
               </linearGradient>
             </defs>
-          </svg>
+           </svg>
+          </SvgButton>
         </VotesContainer>
       </HeaderContainer>
       <GridContainer>
         <FlexColumn>
           <FlexRow>
-            {/* <SVGContainer src={vote} alt="" width={48} height={48} /> */}
-            <svg width="4vw" height="4vw" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="32" cy="32" r="32" fill="url(#paint0_linear_100_889)" />
-              <circle cx="32" cy="32" r="31.5" stroke="url(#paint1_linear_100_889)" stroke-opacity="0.06" />
-              <path d="M31.9998 35.9997C37.1545 35.9997 41.3332 31.821 41.3332 26.6663C41.3332 21.5117 37.1545 17.333 31.9998 17.333C26.8452 17.333 22.6665 21.5117 22.6665 26.6663C22.6665 31.821 26.8452 35.9997 31.9998 35.9997Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M26.9468 34.5202L25.3335 46.6668L32.0002 42.6668L38.6668 46.6668L37.0535 34.5068" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-              <defs>
-                <linearGradient id="paint0_linear_100_889" x1="29.4704" y1="-17.3333" x2="82.1817" y2="42.1701" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#4A6A9B" />
-                  <stop offset="0.738289" stop-color="#4B27DD" />
-                  <stop offset="1" stop-color="#5E14BC" />
-                </linearGradient>
-                <linearGradient id="paint1_linear_100_889" x1="-3.34265e-06" y1="-2.24657" x2="23.6904" y2="78.1279" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="white" />
-                  <stop offset="1" stop-color="white" stop-opacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
+              <svg width="4vw" height="4vw" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" pointerEvents="none">
+                <circle cx="32" cy="32" r="32" fill="url(#paint0_linear_100_889)" />
+                <circle cx="32" cy="32" r="31.5" stroke="url(#paint1_linear_100_889)" stroke-opacity="0.06" />
+                <path d="M31.9998 35.9997C37.1545 35.9997 41.3332 31.821 41.3332 26.6663C41.3332 21.5117 37.1545 17.333 31.9998 17.333C26.8452 17.333 22.6665 21.5117 22.6665 26.6663C22.6665 31.821 26.8452 35.9997 31.9998 35.9997Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M26.9468 34.5202L25.3335 46.6668L32.0002 42.6668L38.6668 46.6668L37.0535 34.5068" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                <defs>
+                  <linearGradient id="paint0_linear_100_889" x1="29.4704" y1="-17.3333" x2="82.1817" y2="42.1701" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4A6A9B" />
+                    <stop offset="0.738289" stop-color="#4B27DD" />
+                    <stop offset="1" stop-color="#5E14BC" />
+                  </linearGradient>
+                  <linearGradient id="paint1_linear_100_889" x1="-3.34265e-06" y1="-2.24657" x2="23.6904" y2="78.1279" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="white" />
+                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+              </svg>
             <TitleText>Next Voting Round <br /> in 1d:23h:48m</TitleText>
           </FlexRow>
           <SubTitleText>Top 3 songs from the list will be added to the playlist when this round ends. Learn More</SubTitleText>
@@ -75,6 +112,38 @@ const StyledComponentsExample = () => {
           </FlexColumn>
         </FlexRow>
       </GridContainer>
+
+      {
+        state.modal && (
+          <StyledModal >
+            <ModalContent>
+              <div className="modal-header">
+                <h3>Static modal</h3>
+                <button type="button" onClick={closeModal} data-modal-hide="static-modal">
+                  <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
+                </button>
+              </div>
+              <div className="modal-body">
+                <p>
+                  With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
+                </p>
+                <p>
+                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+                </p>
+              </div>
+              <div className="modal-footer">
+                <button data-modal-hide="static-modal" type="button">I accept</button>
+                <button data-modal-hide="static-modal" type="button">Decline</button>
+              </div>
+            </ModalContent>
+          </StyledModal>
+        )
+      }
+
+
     </MainContainer>
   );
 };
