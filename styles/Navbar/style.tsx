@@ -20,7 +20,6 @@ export const Tab = styled.div`
     font-weight: 250;
     line-height: 3.357vw;
     letter-spacing: 0em;
-    color: white;
 `
 
 export const Right = styled.div`
