@@ -6,7 +6,7 @@ import PlaySong from '@components/playSong'
 
 // import Image from 'next/image'
 // import { Inter } from 'next/font/google'
-import Navbar from '@components/navbar'
+import Navbar from '@components/NavBar/NavBar'
 import Sidebar from '@components/sidebar'
 
 
