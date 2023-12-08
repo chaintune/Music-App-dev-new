@@ -108,26 +108,30 @@ export const StyledModal = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
-  top: 10vw;
+  top: 15vw;
   right: 0;
-  left: 30vw;
+  left: 10vw;
   z-index: 50;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: calc(100% - 1rem);
   max-height: 100%;
+  
 `;
 
 export const ModalContent = styled.div`
   position: relative;
-  padding: 1rem;
-  width: 100%;
-  max-width: 32rem;
-  max-height: 100%;
-  background-color: #ffffff;
-  border-radius: 0.5rem;
+  /* padding: 1rem; */
+  width: 70.75%;
+  /* max-width: 32rem; */
+  height: 55.5%;
+  border-radius: 24px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(28, 30, 34, 0.33)
+rgba(31, 34, 40, 0.5);
+background-color: rgba(255, 255, 255, 0.06)
+rgba(255, 255, 255, 0);
 
   & .modal-header {
     display: flex;

@@ -250,6 +250,7 @@ export const SearchBar = styled.input`
 export const DropdownContainer = styled.div`
   position: relative;
   display: inline-block;
+  margin-left: 25vw;
 `;
 
 export const DropdownButton = styled.button`
@@ -334,7 +335,7 @@ export const TitleBlock = styled.div`
 `
 export const InfoBlock = styled.div`
   width:100%;
-  margin-right: 56px;
+  margin-right: 0px;
   display:flex;
   flex-direction:row;
   align-items:center;
@@ -346,6 +347,7 @@ export const Title = styled.div`
   flex-direction:row;
   align-items:center;
 `
+
 export const Thumbnail = styled(Image)`
     width: 48px;
     height: 48px;

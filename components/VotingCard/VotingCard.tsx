@@ -1,4 +1,6 @@
 'use client'
+import { SearchPlaylist } from '@components';
+import PlaylistTable from '@components/PlaylistTable/PlaylistTable';
 import { MainContainer, HeaderContainer, Title, VotesContainer, VotesText, GridContainer, FlexColumn, FlexRow, TitleText, SubTitleText, StyledImage, SongTitleText, SongDetailsText, VoteCountText, StyledModal, ModalContent, SvgButton, VotingColumn } from '@styles/VotingCard/style';
 import { useReducer } from 'react';
 
@@ -115,33 +117,11 @@ const StyledComponentsExample = () => {
         state.modal && (
           <StyledModal >
             <ModalContent>
-              <div className="modal-header">
-                <h3>Static modal</h3>
-                <button type="button" onClick={closeModal} data-modal-hide="static-modal">
-                  <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                  </svg>
-                  <span className="sr-only">Close modal</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <p>
-                  With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                </p>
-                <p>
-                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                </p>
-              </div>
-              <div className="modal-footer">
-                <button data-modal-hide="static-modal" type="button">I accept</button>
-                <button data-modal-hide="static-modal" type="button">Decline</button>
-              </div>
+              <SearchPlaylist handleSearchClose={closeModal}/>
             </ModalContent>
           </StyledModal>
         )
       }
-
-
     </MainContainer>
   );
 };
