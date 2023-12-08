@@ -6,3 +6,7 @@ export { default as CommunityPlaylist } from './CommunityPlaylist/CommunityPlayl
 export { default as VotingCard } from './VotingCard/VotingCard'
 export { default as SongCard } from './SongCard/songCard'
 export { default as PlaylistTable } from './PlaylistTable/PlaylistTable'
+export { default as MixedCard} from './MixedCard/MixedCard'
+export { default as NewLaunch} from './NewLaunch/NewLaunch'
+export { default as Community} from './Community/Community'
+export { default as RecPlay} from './RecPlay/recPlay'

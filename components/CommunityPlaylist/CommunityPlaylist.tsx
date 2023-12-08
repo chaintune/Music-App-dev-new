@@ -1,5 +1,5 @@
 'use client'
-import MixedCard from '../mixedCard'
+import MixedCard from '../MixedCard/MixedCard'
 import './playlist.css'
 import styled from 'styled-components'
 import NextImage from 'next/image';
