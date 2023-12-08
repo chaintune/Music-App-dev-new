@@ -46,9 +46,7 @@ const PlaylistCard=()=>{
                         Made by Klariet • 54 songs  •  3 hr 18 min
                     </CardInfo>
                 </Wrap2>
-                
             </Text>
-            
         </CardContainer>
     )
 }

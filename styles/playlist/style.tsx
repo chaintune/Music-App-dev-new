@@ -9,6 +9,8 @@ export const CardContainer = styled.div`
     padding: 16px;
     display:flex;
     flex-direction:row;
+    margin-left: 2.8vw;
+    margin-bottom: 2vw;
     /* margin-bottom:16px; */
 `;
 export const CoverImage = styled(Image)`

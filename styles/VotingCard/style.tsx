@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MainContainer = styled.div`
   background : linear-gradient(159deg, rgba(28, 30, 34, 0.33) 1.89%, rgba(31, 34, 40, 0.50) 89.55%);
-  margin-right: 25vw;
+  margin-right: 26vw;
   margin-left: 3vw;
   border-radius: 20px;
   padding-bottom: 0.5vw;

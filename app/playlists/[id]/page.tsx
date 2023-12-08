@@ -1,10 +1,10 @@
-import { Layout ,SongCard, PlaylistTable} from "@components";
+import { Layout ,SongCard, PlaylistTable, PlaylistCard} from "@components";
 import {VotingCard} from "@components";
 
 const Song_Page = () => {
     return ( 
        <Layout>
-             {/* <SongCard/> */}
+             <PlaylistCard />
              <VotingCard/>
              <PlaylistTable/>
        </Layout>

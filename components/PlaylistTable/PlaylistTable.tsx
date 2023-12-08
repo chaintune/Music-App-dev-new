@@ -3,7 +3,7 @@ import { useReducer } from "react";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
-    margin-right: 22vw;
+    margin-right: 23vw;
     padding: 2vw 3vw;
 `;
 
@@ -200,7 +200,6 @@ const PlaylistTable = () => {
     }
 
     const options = [
-        "Most Recent",
         "Most Popular",
         "Top Rated",
         "Most Played",
