@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import  Image  from 'next/image';
 
 export const SidebarContainer = styled.div`
-  width: 18vw;
-  height: 69.7vh;
-  position: fixed;
-  margin-left: 77vw;
+  width: 22.937vw;
+  height: 70vh;
+  /* position: fixed; */
+  /* margin-left: 77vw; */
   background: rgba(28, 30, 34, 0.8);
   border-radius: 30px;
   backdrop-filter: blur(120px);

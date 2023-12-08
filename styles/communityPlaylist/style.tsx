@@ -9,13 +9,14 @@ export const BadaContainer = styled.div`
   height: 70vh;
   border-radius: 30px;
   overflow-y: auto;
+  scroll-behavior: smooth;
 `;
 
 export const Container = styled.div`
   height: 340px;
-  width: 75vw;
-  margin-bottom: 20px;
-  position: relative;
+  width: 100%;
+  /* margin-bottom: 20px; */
+  /* position: relative; */
   background: rgba(28, 30, 34, 0.8);
   border-radius: 30px;
   backdrop-filter: blur(120px);
