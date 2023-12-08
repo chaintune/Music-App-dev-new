@@ -5,7 +5,9 @@ export const Nav = styled.div`
     padding: 3.721vh 2.797vw;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
+    /* position: fixed; */
+    left:20vw;
     /* background-color: #090A0D; */
 `
 
