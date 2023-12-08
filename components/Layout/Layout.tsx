@@ -9,7 +9,7 @@ const Layout = ({ children }: LayoutProps) => {
                 <NavBar />
                 <SideBar />
                 {children}
-                <div className="fixed bottom-0 left-20">
+                <div className="fixed bottom-0 flex justify-center" style={{width: '100vw'}}>
                     <PlaySong />
                 </div>
             </div>

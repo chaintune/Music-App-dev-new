@@ -1,11 +1,11 @@
 'use client'
 import arrow from '@assets/arrow.svg'
+import Link from 'next/link'
 import Image from 'next/image'
 import search from '@assets/search.svg'
 import search_white from '@assets/search-white.svg'
 import {Nav, Left, Tab, Right, Wrap1, Wrap11, Wrap111, Wrap112, Wrap12, Wrap2, Wrap21, Wrap22} from "@styles/Navbar/style"
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
 
 const Navbar = () => {
     const pathname = usePathname()
@@ -19,9 +19,9 @@ const Navbar = () => {
     return (
         <Nav>
             <Left>
-                <Tab style={{color: getColor(pathname, '/')}}>Home</Tab>
-                <Tab style={{color: getColor(pathname, '/explore')}}>Explore</Tab>
-                <Image src={getSrc(pathname)} alt='' style={{width: '2.797vw', height: '2.797vw'}}  />
+                <Link href='/'><Tab style={{color: getColor(pathname, '/')}}>Home</Tab></Link>
+                <Link href='/explore'><Tab style={{color: getColor(pathname, '/explore')}}>Explore</Tab></Link>
+                <Link href='/search'><Image src={getSrc(pathname)} alt='' style={{width: '2.797vw', height: '2.797vw'}}  /></Link>
             </Left>
             <Right>
                 <Wrap1>
