@@ -5,7 +5,8 @@ import  Image  from 'next/image';
 export const SidebarContainer = styled.div`
   width: 22.937vw;
   height: 70vh;
-  /* position: fixed; */
+  position: fixed;
+  right: 1vw;
   /* margin-left: 77vw; */
   background: rgba(28, 30, 34, 0.8);
   border-radius: 30px;

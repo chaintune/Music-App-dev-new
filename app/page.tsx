@@ -1,7 +1,5 @@
-import Navbar from '@components/NavBar/NavBar'
 import React from 'react'
-import PlaySong from '@components/playSong'
-import Sidebar from '@components/sidebar'
+import {Layout} from '@components'
 import Community from '@components/community'
 import MixedCard from '@components/mixedCard'
 import NewLaunch from '@components/newLaunch'
@@ -10,14 +8,11 @@ import {Cont, Left, Ele3, Ele31} from '@styles/Home/style'
 
 const Home = () => {
   return (
-    <div>
-        <Navbar />
-
+      <Layout>
+        {/* <Navbar /> */}
         <Cont>
           <Left>
-
             <NewLaunch />
-
             <Ele3>
               <Ele31></Ele31>
 
@@ -35,14 +30,8 @@ const Home = () => {
             <Community component={<MixedCard />} title='Weekly Mixes' />
 
           </Left>
-
-          <Sidebar />
         </Cont>
-
-        <div className='fixed left-0 right-0 bottom-0 flex justify-center items-center'>
-          <PlaySong />
-        </div>
-    </div>
+</Layout>
   )
 }
 
