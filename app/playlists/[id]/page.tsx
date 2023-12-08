@@ -4,7 +4,7 @@ import {VotingCard} from "@components";
 const Song_Page = () => {
     return ( 
        <Layout>
-             <SongCard/>
+             {/* <SongCard/> */}
              <VotingCard/>
              <PlaylistTable/>
        </Layout>

@@ -112,7 +112,6 @@ const StyledComponentsExample = () => {
           </FlexColumn>
         </FlexRow>
       </GridContainer>
-
       {
         state.modal && (
           <StyledModal >
