@@ -1,6 +1,5 @@
 'use client'
 import { SearchPlaylist } from '@components';
-import PlaylistTable from '@components/PlaylistTable/PlaylistTable';
 import { MainContainer, HeaderContainer, Title, VotesContainer, VotesText, GridContainer, FlexColumn, FlexRow, TitleText, SubTitleText, StyledImage, SongTitleText, SongDetailsText, VoteCountText, StyledModal, ModalContent, SvgButton, VotingColumn } from '@styles/VotingCard/style';
 import { useReducer } from 'react';
 

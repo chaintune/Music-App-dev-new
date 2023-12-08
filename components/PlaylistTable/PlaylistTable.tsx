@@ -12,8 +12,10 @@ const TableContainer = styled.div`
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     position: relative;
-    background: linear-gradient(159.05deg, rgba(28, 30, 34, 0.33) 1.89%, rgba(31, 34, 40, 0.5) 89.55%),
-linear-gradient(163.58deg, rgba(255, 255, 255, 0.06) -2.71%, rgba(255, 255, 255, 0) 102.71%);
+    background : linear-gradient(159deg, rgba(28, 30, 34, 0.33) 1.89%, rgba(31, 34, 40, 0.50) 89.55%);
+    background-color: rgb(30, 30, 30);
+    /* background: linear-gradient(159.05deg, rgba(28, 30, 34, 0.33) 1.89%, rgba(31, 34, 40, 0.5) 89.55%),
+linear-gradient(163.58deg, rgba(255, 255, 255, 0.06) -2.71%, rgba(255, 255, 255, 0) 102.71%); */
 `;
 
 const Input = styled.input`
@@ -127,10 +129,19 @@ const TableRow = styled.tr`
 `;
 
 const TableCell = styled.td`
-  padding: 0 1rem;
-  color: #4a5568;
+  padding: 0 1vw;
   overflow: auto;
   white-space: nowrap;
+  font-size: 1vw;
+`;
+
+const TableId = styled.td`
+  padding: 0 1vw;
+  overflow: auto;
+  white-space: nowrap;
+  font-size: 1vw;
+  position: relative;
+  /* margin: 2vw 0 0 3vw; */
 `;
 
 const Image = styled.img`
@@ -149,10 +160,14 @@ const Subtitle = styled.p`
 `;
 
 const TableHead = styled.thead`
-  font-size: 0.75rem; /* Equivalent to text-xs */
-  color: #4a5568; /* Equivalent to text-gray-700 */
-  /* text-transform: uppercase; */
-  /* background-color: transparent; */
+  font-size: 1vw; 
+  font-weight: lighter;
+`;
+
+const TableHeaderId = styled.th`
+  padding: 1rem;
+  /* position: absolute; */
+  /* margin: 0vw 0 0 3vw; */
 `;
 
 const TableHeaderCell = styled.th`
@@ -257,18 +272,17 @@ const PlaylistTable = () => {
                         {
                             state.dropdown && (
                                 <div
-                                id="dropdownAction"
-                                className="z-10 absolute overflow-hidden bg-white rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
-                                // style={{ top: '100%', right: 0 }}
-                            >
-                                <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
-                                    {options.map((option, index) => (
-                                        <li key={index}>
-                                            <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => handleOptionChange(option)}>{option}</a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                                    id="dropdownAction"
+                                    className="z-10 absolute mt-[4vw] overflow-hidden bg-white rounded-lg shadow w-44 dark:bg-[#1F222880] dark:divide-gray-600"
+                                >
+                                    <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
+                                        {options.map((option, index) => (
+                                            <li key={index}>
+                                                <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" onClick={() => handleOptionChange(option)}>{option}</a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             )
                         }
                     </FlexContainer>
@@ -279,9 +293,9 @@ const PlaylistTable = () => {
                 >
                     <TableHead>
                         <tr>
-                            <TableHeaderCell>
-                                <div className="flex items-center">#</div>
-                            </TableHeaderCell>
+                            <TableHeaderId>
+                                #
+                            </TableHeaderId>
                             <TableHeaderCell>
                                 Title
                             </TableHeaderCell>
@@ -299,9 +313,9 @@ const PlaylistTable = () => {
                     {/* {songs.map(song => ( */}
                     <TableBody>
                         <TableRow>
-                            <TableCell>
+                            <TableId>
                                 01
-                            </TableCell>
+                            </TableId>
                             <TableCell scope="row">
                                 <div className="flex items-center px-4 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                     <Image
@@ -325,9 +339,9 @@ const PlaylistTable = () => {
                             </TableCell>
                         </TableRow>
                         <TableRow>
-                            <TableCell>
+                            <TableId>
                                 01
-                            </TableCell>
+                            </TableId>
                             <TableCell scope="row">
                                 <div className="flex items-center px-4 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                     <Image

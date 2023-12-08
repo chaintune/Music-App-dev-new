@@ -1,3 +1,4 @@
+import { Layout } from '@components'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -18,7 +19,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/idq4qqe.css" />
       </head>
-      <body className={inter.className} style={{fontFamily: 'Aileron'}}>{children}</body>
+        <body className={inter.className} style={{ fontFamily: 'Aileron' }}>{children}</body>
     </html>
   )
 }

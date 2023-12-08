@@ -5,7 +5,7 @@ export const MainContainer = styled.div`
   margin-right: 26vw;
   margin-left: 3vw;
   border-radius: 20px;
-  padding-bottom: 0.5vw;
+  padding-bottom: 1vw;
   color: #FFFFFF;
   background-color: rgb(30, 30, 30);
 `;

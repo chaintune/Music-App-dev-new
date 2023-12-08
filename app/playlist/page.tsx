@@ -2,13 +2,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 // import CommunityPlaylist from '@components/communityPlaylist'
-// import PlaySong from '@components/playSong'
-
-// import Image from 'next/image'
-// import { Inter } from 'next/font/google'
-import { NavBar, SideBar, PlaylistCard, SearchPlaylist, PlaySong, Layout } from '@components'
-
-// const inter = Inter({ subsets: ['latin'] })
+import { PlaylistCard, SearchPlaylist, Layout } from '@components'
 
 export default function Home() {
   return (
@@ -18,7 +12,6 @@ export default function Home() {
         <SearchPlaylist/>
       </div>
     </Layout>
-
   )
 }
 
