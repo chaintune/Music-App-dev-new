@@ -1,3 +1,4 @@
+//import { WalletProvider } from '@app/WalletContext'
 import { Layout, CommunityPlaylist, ArtistMix, BestOf, Recommended, BrowseAll, Community, MixedCard } from '@components'
 // const inter = Inter({ subsets: ['latin'] })
 
