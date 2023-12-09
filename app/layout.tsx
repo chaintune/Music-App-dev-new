@@ -3,8 +3,8 @@ import { Layout } from '@components'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { useEffect, useState } from 'react'
-import { song } from '@types'
-import SongContext from '@context/songContext'
+import { song, artist, album } from '@types'
+import DataContext from '@context/dataContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +20,8 @@ export default function RootLayout({
 }) {
 
   const [songs, setSongs] = useState<song[]>([])
+  const [artists, setArtists] = useState<artist[]>([])
+  const [albums, setAlbums] = useState<album[]>([])
 
   useEffect(() => {
     const fetchSongs = async () => {
@@ -28,7 +30,18 @@ export default function RootLayout({
 
         setSongs(data)
 
-        console.log(data)
+        const response2 = await fetch('/api/artist');
+        const data2 = await response2.json()
+
+        setArtists(data2)
+
+        const response3 = await fetch('/api/album');
+        const data3 = await response3.json()
+
+        setAlbums(data3)
+
+        // console.log(data)
+        console.log(data, data2, data3)
     }
 
     fetchSongs()
@@ -40,9 +53,9 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/idq4qqe.css" />
       </head>
-      <SongContext.Provider value={songs}>
+      <DataContext.Provider value={{songs, albums, artists}}>
         <body className={inter.className} style={{ fontFamily: 'Aileron' }}>{children}</body>
-      </SongContext.Provider>
+      </DataContext.Provider>
     </html>
   )
 }

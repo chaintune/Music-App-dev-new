@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { ReactElement, useEffect } from 'react'
 import MixedCard from '../MixedCard/MixedCard'
 // import './playlist.css'
 import styled from 'styled-components'
@@ -11,7 +11,13 @@ const NextImageComponent = styled(NextImage)`
   /* Add your styles here if needed */
 `;
 
-const Community = ({ component, title }: { component: React.ReactNode, title: string }) => {
+
+const Community = ({ cardComponent, title, data }: { cardComponent: (data: any) => ReactElement, title: string, data: any[] }) => {
+
+  useEffect(() => {
+    console.log(data)
+  })
+
   return (
     <Container>
       <FlexContainer>
@@ -21,16 +27,9 @@ const Community = ({ component, title }: { component: React.ReactNode, title: st
         </RoundedButton>
       </FlexContainer>
       <PlaylistContainer>
-        {component}
-        {component}
-        {component}
-        {component}
-        {component}
-        {component}
-        {component}
-        {component}
-        {component}
-        {component}
+        {data?.map(d => (
+          cardComponent(d)
+        ))}
       </PlaylistContainer>
     </Container>
   )
