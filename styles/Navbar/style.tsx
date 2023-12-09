@@ -7,7 +7,7 @@ export const Nav = styled.div`
     justify-content: space-between;
     /* align-items: center; */
     /* position: fixed; */
-    left:20vw;
+    /* left:20vw; */
     /* background-color: #090A0D; */
 `
 
@@ -19,7 +19,7 @@ export const Left = styled.div`
 
 export const Tab = styled.div`
     font-size: 2.797vw;
-    font-weight: 250;
+    font-weight: 300;
     line-height: 3.357vw;
     letter-spacing: 0em;
 `

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { song } from '@types'
+import { Community, Layout, MixedCard } from '@components';
 
 const SongList = ({data, search}: {data: song[]; search: string}) => {
 
@@ -28,29 +29,31 @@ const Search = () => {
         setSearch(e.target.value)
     }
 
-    useEffect(() => {
-        const fetchSongs = async () => {
-            const response = await fetch('/api/song');
-            const data = await response.json()
+    // useEffect(() => {
+    //     const fetchSongs = async () => {
+    //         const response = await fetch('/api/song');
+    //         const data = await response.json()
 
-            setSongs(data)
-        }
+    //         setSongs(data)
+    //     }
 
-        fetchSongs()
-    }, [])
+    //     fetchSongs()
+    // }, [])
 
     return (
-        <div className='flex justify-center flex-col items-center'>
-            <br />
-            <input type="text" value={search} onChange={handleSearchChange} style={{border: '1px solid black'}}/>
+        <Layout>
+            <div style={{padding: '0vh 2.8vw', display: 'flex', justifyContent: 'space-between'}}>
+                <div className="flex justify-between flex-col" style={{ width: '70.769vw', height: '70vh', overflowY: 'auto', gap: '1.860vh', scrollBehavior: 'smooth'}}>
+                    <Community component={<MixedCard />} title='Artists' />
 
-            <br /><br /><br />
+                    <Community component={<MixedCard />} title='Playlists' />
 
-            <SongList 
-                data={songs}
-                search={search}
-            />
-        </div>
+                    <Community component={<MixedCard />} title='Albums' />
+
+                    <Community component={<MixedCard />} title='Profiles' />
+                </div>
+            </div>
+        </Layout>
     )
 }
 
