@@ -10,7 +10,7 @@ import {AlbumWrapper} from "@styles/nftDialog/style";
 
 export default function Home() {
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     const closeDialog = () => {
         setIsOpen(false);
@@ -22,7 +22,9 @@ export default function Home() {
 
     return (
         <Layout>
-            <AlbumWrapper>
+            <div style={{padding: '0vh 2.8vw', display: 'flex', justifyContent: 'space-between'}}>
+                <div className="flex justify-between flex-col" style={{ width: '70.769vw', height: '70vh', overflowY: 'auto', gap: '1.860vh', scrollBehavior: 'smooth'}}>
+                <AlbumWrapper>
                 <SongCard/>
 
                 {
@@ -33,6 +35,8 @@ export default function Home() {
 
             </AlbumWrapper>
 
+                </div>
+            </div>
         </Layout>
     );
 }

@@ -1,8 +1,18 @@
-import React from 'react'
+'use client'
+import React, { useContext, useEffect } from 'react'
 import {Layout, Community, MixedCard, NewLaunch, RecPlay} from '@components'
 import {Cont, Left, Ele3, Ele31} from '@styles/Home/style'
+import SongContext from '@context/songContext'
 
 const Home = () => {
+  const songs = useContext(SongContext)
+  
+  
+  useEffect(() => {
+    
+    console.log("Hellos", songs)
+  }, [])
+
   return (
       <Layout>
         <Cont>
