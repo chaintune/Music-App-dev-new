@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, {MouseEventHandler} from 'react';
 import styled from 'styled-components'; // Import styled-components or your preferred styling library
 
 import feel from "@assets/feel.png"
@@ -8,11 +8,14 @@ import {LeftPart, NFTWrapper, ScrollableGrid, TextWrapper, TopInfoBar} from "@st
 import NFTSongContainer from "@components/NFTDialog/nftSongContainer";
 import cross from "@assets/cross.svg";
 import NextImage from "next/image";
+import {Button} from "@styles/PlaylistTable/style";
+
+
 
 // Styled component for the scrollable container
 
 
-const NFTDialog = () => {
+const NFTDialog: React.FC<NFTDialogProps> = (props) => {
     const nftContainers = [];
 
     for (let i = 0; i < 100; i++) {
@@ -35,7 +38,10 @@ const NFTDialog = () => {
                     <p>
                         25/25 Sold
                     </p>
-                    <NextImageComponent src={cross} alt="" width={48} height={48}/>
+                    <Button onClick={props.close}>
+                        <NextImageComponent src={cross} alt="" width={48} height={48}/>
+                    </Button>
+
                 </LeftPart>
             </TopInfoBar>
             <ScrollableGrid>
@@ -46,6 +52,10 @@ const NFTDialog = () => {
         </NFTWrapper>
     );
 };
+
+interface NFTDialogProps {
+   close:  MouseEventHandler<HTMLButtonElement>;
+}
 
 const NextImageComponent = styled(NextImage)``;
 

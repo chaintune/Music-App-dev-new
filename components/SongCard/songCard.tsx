@@ -10,7 +10,7 @@ import {
     SongContainer,
     SongDetails,
     SongText,
-    StackedComponents,
+
     TopBar,
 
 } from "@styles/songCard/style";
@@ -23,31 +23,31 @@ import playButton from "@assets/play_button.png"
 const songTitle = 'I am a Song';
 const SongCard = () => {
     return (
-        <StackedComponents>
 
-            <SongContainer>
-                <InnerStackedComponents>
-                    <SongBanner src={banner} alt={songTitle}/>
-                    <PlayButton alt="Play" src={playButton} width={64} height={64}/>
-                </InnerStackedComponents>
 
-                <SongDetails>
-                    <TopBar>
-                        <AlbumButton>Album</AlbumButton>
-                        <Buttons>
-                            <NextImageComponent src={pocket} alt="" width={48} height={48}/>
-                            <NextImageComponent src={menu} alt="" width={48} height={48}/>
-                        </Buttons>
+        <SongContainer>
+            <InnerStackedComponents>
+                <SongBanner src={banner} alt={songTitle}/>
+                <PlayButton alt="Play" src={playButton} width={64} height={64}/>
+            </InnerStackedComponents>
 
-                    </TopBar>
-                    <SongText>
-                        <h1>Nothing Happens</h1>
-                        <h2>Wallows • 2019 • 54 songs • 3 hr 18 min</h2>
-                    </SongText>
+            <SongDetails>
+                <TopBar>
+                    <AlbumButton>Album</AlbumButton>
+                    <Buttons>
+                        <NextImageComponent src={pocket} alt="" width={48} height={48}/>
+                        <NextImageComponent src={menu} alt="" width={48} height={48}/>
+                    </Buttons>
 
-                </SongDetails>
-            </SongContainer>
-        </StackedComponents>
+                </TopBar>
+                <SongText>
+                    <h1>Nothing Happens</h1>
+                    <h2>Wallows • 2019 • 54 songs • 3 hr 18 min</h2>
+                </SongText>
+
+            </SongDetails>
+        </SongContainer>
+
     );
 };
 
