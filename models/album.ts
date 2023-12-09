@@ -1,12 +1,7 @@
 import { Schema, model, models } from "mongoose"
 
 const attributesArray = new Schema({
-    trait_type: {
-        type: String,
-    },
-    value: {
-        type: String,
-    }
+    
 })
 
 const filesArray = new Schema({
@@ -21,11 +16,11 @@ const filesArray = new Schema({
 const propsObj = new Schema({
     files: [filesArray],
     category: {
-        type: String,
+        type: String
     }
 })
 
-const songSchema = new Schema({
+const albumSchema = new Schema({
     name: {
         type: String,
     },
@@ -41,10 +36,11 @@ const songSchema = new Schema({
     creator: {
         type: String
     },
-    songs: {
-          
+    songs: [String],
+    artists: [String],
+    date: {
+        type: String,
     },
-    attributes: [attributesArray],
     properties: {
         type: propsObj
     }
@@ -62,6 +58,6 @@ const songSchema = new Schema({
 //     },
 // })
 
-const Song = models.Song || model("Song", songSchema)
+const Album = models.Album || model("Album", albumSchema)
 
-export default Song
+export default Album
