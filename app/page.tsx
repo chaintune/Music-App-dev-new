@@ -35,7 +35,7 @@ const Home = () => {
                     title='Communities you can join'
                     />
 
-                    <Community 
+                    {/* <Community 
                     cardComponent={(data) => <MixedCard {...data}/>} 
                     data={}
                     title='Artist Corner'
@@ -45,7 +45,7 @@ const Home = () => {
 
                     <Community component={<MixedCard/>} title='Trending Community Playlists'/>
 
-                    <Community component={<MixedCard/>} title='Weekly Mixes'/>
+                    <Community component={<MixedCard/>} title='Weekly Mixes'/> */}
 
                 </Left>
             </Cont>

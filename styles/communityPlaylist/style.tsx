@@ -59,12 +59,12 @@ export const PlaylistContainer = styled.div`
   width: 98.6%;
   display: flex;
   flex-wrap: nowrap;
-  gap: 1rem;
+  gap: 8px;
   justify-content: flex-start;
   align-items: flex-start;
   overflow-x: auto;
-  background: rgba(34, 34, 34, 0.4);
+  /* background: rgba(34, 34, 34, 0.4); */
   border-radius: 20px;
-  backdrop-filter: blur(120px);
+  /* backdrop-filter: blur(120px); */
   margin-left: 8px;
 `;

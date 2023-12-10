@@ -60,8 +60,8 @@ export type album = {
     external_url?: string;
     desc?: string;
     creator?: string;
-    songs?: Array<string>;
-    artists?: Array<string>;
+    songs?: string[];
+    artists?: string[];
     date?: string;
     properties?: props;
 }

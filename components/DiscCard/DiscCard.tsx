@@ -11,7 +11,7 @@ type t = {
 
 const DiscCard = ({name, id, link, img}: t) => {
   return (
-    <Div>
+    <Div key={id}>
       <Div2>
         <Img
           loading="lazy"
@@ -19,7 +19,7 @@ const DiscCard = ({name, id, link, img}: t) => {
         />
         <Div3>{name}</Div3>
       </Div2>
-      <Div4>For the top 1% listeners of Quadeca</Div4>
+      <Div4>For the top 1% listeners of {name}</Div4>
       <Div5>
         Get access to exclusive direct interactions with the artist, early
         announcements, and more...
@@ -46,7 +46,11 @@ const DiscCard = ({name, id, link, img}: t) => {
 const Div = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 9px 12px;
+  border-radius: 16px;
+  &:hover{
+    background-color: #32343642;
+  }
 `;
 
 const Div2 = styled.div`
@@ -59,7 +63,8 @@ const Img = styled.img`
   aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
-  width: 64px;
+  width: 4.476vw;
+  border-radius: 50px;
   backdrop-filter: blur(60px);
   overflow: hidden;
   max-width: 100%;
@@ -80,23 +85,24 @@ const Div4 = styled.div`
   justify-content: center;
   align-items: start;
   border-radius: 30px;
+  width: 13.217vw;
   background-color: rgba(255, 255, 255, 0.1);
   margin-top: 23px;
-  width: 100%;
-  padding: 6px 60px 6px 12px;
+  /* width: 100%; */
+  padding: 6px 12px 6px 12px;
   font: 400 12px/20px Aileron, sans-serif;
 `;
 
 const Div5 = styled.div`
   color: #fff;
   margin-top: 13px;
-  width: 100%;
+  width: 22.937vw;
   font: 400 14px/20px Aileron, sans-serif;
 `;
 
 const Div6 = styled.div`
   border-radius: 24px;
-  border: 1px solid #fff;
+  border: 1px solid ;
   background: linear-gradient(
     159deg,
     rgba(28, 30, 34, 0.33) 1.89%,
