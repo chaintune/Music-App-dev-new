@@ -9,24 +9,24 @@ const RecPlay = () => {
         <Ele321>Recently Played</Ele321>
         <Ele322>
             <Rec_play>
-            <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
-            <Rec_name>Quadeca</Rec_name>
+              <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
+              <Rec_name>Quadeca</Rec_name>
             </Rec_play>
             <Rec_play>
-            <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
-            <Rec_name>Quadeca</Rec_name>
+              <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
+              <Rec_name>Quadeca</Rec_name>
             </Rec_play>
             <Rec_play>
-            <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
-            <Rec_name>Quadeca</Rec_name>
+              <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
+              <Rec_name>Quadeca</Rec_name>
             </Rec_play>
             <Rec_play>
-            <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
-            <Rec_name>Quadeca</Rec_name>
+              <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
+              <Rec_name>Quadeca</Rec_name>
             </Rec_play>
             <Rec_play>
-            <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
-            <Rec_name>Quadeca</Rec_name>
+              <Image src={bg} alt='' style={{width: '4.476vw', height: '4.476vw', borderRadius: '12px'}}/>
+              <Rec_name>Quadeca</Rec_name>
             </Rec_play>
         </Ele322>
     </Ele32>

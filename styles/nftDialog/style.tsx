@@ -3,6 +3,14 @@ import styled from "styled-components";
 import NextImage from "next/image";
 
 
+
+export const AlbumWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+`;
+
 export const SongWrapper = styled.div`
 
 
@@ -63,6 +71,7 @@ export const CostDiv = styled.div`
 `
 
 export  const NFTWrapper = styled.div`
+    z-index: 24;
     width: 1012px;
     height: 640px;
     border-radius: 24px;

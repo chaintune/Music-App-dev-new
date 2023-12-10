@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import NextImage from "next/image";
 
-export const StackedComponents = styled.div`
-  position: relative;
-`;
 
 export const InnerStackedComponents = styled.div`
     margin-right: 700px;
@@ -11,7 +8,7 @@ export const InnerStackedComponents = styled.div`
 `;
 
 export const SongContainer = styled.div`
-    position: absolute;
+
 
     width: 1012px;
     height: 272px;
@@ -22,8 +19,8 @@ export const SongContainer = styled.div`
     border: 1px solid #FFF;
     box-shadow: 2px 4px 48px 0 rgba(0, 0, 0, 0.50);
     backdrop-filter: blur(60px);
- 
-    
+
+
     background: linear-gradient(159deg, rgba(28, 30, 34, 0.33) 1.89%, rgba(31, 34, 40, 0.50) 89.55%);
     font-family: Aileron;
 `;

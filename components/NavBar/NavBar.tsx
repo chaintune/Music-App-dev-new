@@ -8,6 +8,7 @@ import {Nav, Left, Tab, Right, Wrap1, Wrap11, Wrap111, Wrap112, Wrap12, Wrap2, W
 import { usePathname } from 'next/navigation'
 import { ChangeEvent, FormEvent, useEffect, useState, useRef } from 'react';
 import axios from 'axios'
+import { SearchBar } from '@components'
 import { Network, Provider } from 'aptos';
 //import { WalletManager } from '@utils/WalletManager'
 //import { WalletProvider } from '@app/WalletContext'
@@ -159,7 +160,13 @@ const Navbar = () => {
             <Left>
                 <Link href='/'><Tab style={{color: getColor(pathname, '/')}}>Home</Tab></Link>
                 <Link href='/explore'><Tab style={{color: getColor(pathname, '/explore')}}>Explore</Tab></Link>
-                <Link href='/search'><Image src={getSrc(pathname)} alt='' style={{width: '2.797vw', height: '2.797vw'}}  /></Link>
+                <Link href='/search' style={{display: 'flex', gap: '0.559vw', alignItems: 'center'}}>
+                    <Image src={getSrc(pathname)} alt='' style={{width: '2.797vw', height: '2.797vw'}}  />
+                    {
+                        pathname === '/search' &&
+                        <SearchBar />
+                    }
+                </Link>
             </Left>
             <Right>
                 <Wrap1>

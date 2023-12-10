@@ -3,17 +3,21 @@ import bg from '@assets/bg.svg';
 import  Image  from 'next/image';
 import {CardContainer, CardImage, CardInfo, Title, Description} from '@styles/mixedCard/style'
 
+type t = {
+  id: string;
+  artist: string;
+  name: string;
+  img: string
+}
 
-
-
-const MixedCard = () => {
+const MixedCard = ({id, artist, name, img}: t) => {
   return (
-    <CardContainer>
-      <CardImage src={bg} alt='' />
+    <CardContainer key={id}>
+      <CardImage src={img} alt='' />
       <CardInfo>
-        <Title>Daily Mix 2</Title>
+        <Title>{name}</Title>
         <Description>
-          The Strokes, Gorillaz, Tame Impala and more to discover
+          {artist}
         </Description>
       </CardInfo>
     </CardContainer>

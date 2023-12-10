@@ -1,36 +1,57 @@
 'use client'
 
-import React, {useEffect} from 'react'
-import {Layout, Community, MixedCard, NewLaunch, RecPlay} from '@components'
-import {Cont, Left, Ele3, Ele31} from '@styles/Home/style'
-//import { WalletProvider } from '@app/WalletContext'
+import React, { useContext, useEffect } from 'react'
+import { Layout, Community, MixedCard, NewLaunch, RecPlay, DiscCard } from '@components'
+import { Cont, Left, Ele3, Ele31 } from '@styles/Home/style'
+import SongContext from '@context/dataContext'
+import DataContext from '@context/dataContext'
+import { artist, song, album } from '@types'
 
 const Home = () => {
 
-  return (
-    
-      <Layout>
-        <Cont>
-          <Left>
-            <NewLaunch />
-            <Ele3>
-              <Ele31></Ele31>
-              <RecPlay />
-            </Ele3>
-            <Community component={<MixedCard />} title='Communitites you can join' />
+    const {artists, songs, albums} = useContext(DataContext)
 
-            <Community component={<MixedCard />} title='Artist Corner' />
+    let discData: any[] = [];
+    artists.map(artist => {
+      let n = discData.push({
+        id: artist!._id,
+        link: artist!.community,
+        name: artist!.name,
+        img: artist!.image
+      })
+    })
 
-            <Community component={<MixedCard />} title='Recommended Playlists' />
+    return (
+        <Layout>
+            <Cont>
+                <Left>
+                    <NewLaunch/>
+                    <Ele3>
+                        <Ele31></Ele31>
+                        <RecPlay/>
+                    </Ele3>
+                    <Community 
+                    cardComponent={(data) => <DiscCard {...data}/>} 
+                    data={discData}
+                    title='Communities you can join'
+                    />
 
-            <Community component={<MixedCard />} title='Trending Community Playlists' />
+                    {/* <Community 
+                    cardComponent={(data) => <MixedCard {...data}/>} 
+                    data={}
+                    title='Artist Corner'
+                    />
 
-            <Community component={<MixedCard />} title='Weekly Mixes' />
+                    <Community component={<MixedCard/>} title='Recommended Playlists'/>
 
-          </Left>
-        </Cont>
-</Layout>
-  )
+                    <Community component={<MixedCard/>} title='Trending Community Playlists'/>
+
+                    <Community component={<MixedCard/>} title='Weekly Mixes'/> */}
+
+                </Left>
+            </Cont>
+        </Layout>
+    )
 }
 
 export default Home
