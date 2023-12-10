@@ -5,6 +5,7 @@ import  Image  from 'next/image';
 
 
 export const CardContainer = styled.div`
+cursor: pointer;
   width: 11rem;
   height: 16.75rem;
   padding: 0.5rem;

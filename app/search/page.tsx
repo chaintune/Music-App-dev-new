@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react'
 import { song } from '@types'
-import { AlbumCard, ArtistCard, Community, Layout, MixedCard } from '@components';
+import { AlbumCard, ArtistCard, Community, CurrentSong, Layout, MixedCard } from '@components';
 import DataContext from '@context/dataContext';
+import { useRouter } from 'next/navigation';
 
 const SongList = ({ data, search }: { data: song[]; search: string }) => {
 
@@ -25,6 +26,11 @@ const SongList = ({ data, search }: { data: song[]; search: string }) => {
 const Search = () => {
     const [search, setSearch] = useState('')
     const { artists, songs, albums } = useContext(DataContext)
+    const router = useRouter()
+
+    const handleClick = (id: string) => {
+        router.push(`/album/${id}`);
+    }
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
@@ -63,6 +69,7 @@ const Search = () => {
         <Layout>
             <div style={{padding: '0vh 2.8vw', display: 'flex', justifyContent: 'space-between'}}>
                 <div className="flex justify-between flex-col" style={{ width: '70.769vw', height: '70vh', overflowY: 'auto', gap: '1.860vh', scrollBehavior: 'smooth'}}>
+                    <CurrentSong />
                     <Community 
                     cardComponent={(data) => <ArtistCard {...data} />} 
                     data={data1}
@@ -76,7 +83,7 @@ const Search = () => {
                     /> */}
 
                     <Community 
-                    cardComponent={(data) => <AlbumCard {...data} />} 
+                    cardComponent={(data) => <AlbumCard {...data} handleClick = {handleClick} />} 
                     data={data2}
                     title='Albums' 
                     />

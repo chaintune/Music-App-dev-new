@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useContext, useEffect } from 'react'
-import { Layout, Community, MixedCard, NewLaunch, RecPlay, DiscCard } from '@components'
+import { Layout, Community, MixedCard, NewLaunch, RecPlay, DiscCard, CurrentSong } from '@components'
 import { Cont, Left, Ele3, Ele31 } from '@styles/Home/style'
 import SongContext from '@context/dataContext'
 import DataContext from '@context/dataContext'
@@ -26,6 +26,7 @@ const Home = () => {
             <Cont>
                 <Left>
                     <NewLaunch/>
+                    <CurrentSong />
                     <Ele3>
                         <Ele31></Ele31>
                         <RecPlay/>

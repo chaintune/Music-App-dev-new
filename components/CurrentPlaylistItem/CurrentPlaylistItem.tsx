@@ -25,7 +25,7 @@ export default function CurrentPlaylistItem({
     <Wrapper>
       <Details >
         <h1>{index}</h1>
-        <Image src={thumbnail} alt={"hello"} width={120} height={120} />
+        <img src={thumbnail} alt={"hello"} width={120} height={120} />
       </Details>
 
       <ChildWrapper>

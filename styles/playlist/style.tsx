@@ -13,7 +13,7 @@ export const CardContainer = styled.div`
     margin-bottom: 2vw;
     /* margin-bottom:16px; */
 `;
-export const CoverImage = styled(Image)`
+export const CoverImage = styled.img`
     width: 240px;
     height:240px;
     border-radius: 16px;
@@ -37,7 +37,7 @@ export const Play = styled.div`
     justify-content:center;
     align-items:center;
 `
-export const PlayImage = styled(Image)`
+export const PlayImage = styled.img`
     width: 32px;
     height:32px;
 `;
@@ -110,7 +110,7 @@ export const Wrap4=styled.div`
     flex-direction:row;
     align-items:center;
 `
-export const Options = styled(Image)`
+export const Options = styled.img`
     height:24px;
     width:24px;
 `
@@ -199,10 +199,10 @@ export const VotingCardContainer = styled.p`
     padding: 8px 8px 4px 8px;
     border-radius: 24px;
 `
-export const PlaylistCover = styled(Image)`
+export const PlaylistCover = styled.img`
     width: 128px;
     height: 128px;
-    boreder-radius:16px;
+    border-radius:16px;
     margin-right:12px;
 `
 export const Wrap6 = styled.div`
@@ -295,7 +295,7 @@ export const DropdownItem = styled.div`
   }
 `;
 
-export const DropdownIcon = styled(Image)`
+export const DropdownIcon = styled.img`
   width:16px;
   height:8px;
 `
@@ -348,7 +348,7 @@ export const Title = styled.div`
   align-items:center;
 `
 
-export const Thumbnail = styled(Image)`
+export const Thumbnail = styled.img`
     width: 48px;
     height: 48px;
     border-radius: 8px;

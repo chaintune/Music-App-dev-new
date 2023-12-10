@@ -8,11 +8,13 @@ type t = {
     name: string;
     img: string;
     artist: string;
+    handleClick: (id: string) => void;
 }
 
-const AlbumCard = ({ name, img, artist, id }: t) => {
+const AlbumCard = ({ name, img, artist, id, handleClick }: t) => {
+
   return (
-    <CardContainer key={id}>
+    <CardContainer key={id} onClick={() => handleClick(id)}>
       <CardImage src={img} alt='' />
       <CardInfo>
         <Title>{name}</Title>
