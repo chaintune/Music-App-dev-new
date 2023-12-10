@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 import { ChangeEvent, FormEvent, useEffect, useState, useRef } from 'react';
 import axios from 'axios'
 import { Network, Provider } from 'aptos';
-import { WalletManager } from '@utils/WalletManager'
+//import { WalletManager } from '@utils/WalletManager'
 //import { WalletProvider } from '@app/WalletContext'
 //import { useWallet } from '@app/WalletContext'
 
@@ -18,17 +18,18 @@ export const moduleAddress = process.env.NEXT_PUBLIC_MODULE_ADDRESS;
 
 
 const Navbar = () => {
-    const walletManager = new WalletManager();
+    //const walletManager = new WalletManager();
     //const {connected, windowDefined,setWindowDefined, address, handleConnectClick, handleDisconnect} = useWallet();
-    //const [windowDefined, setWindowDefined] = useState<boolean>(false);
-    const [address, setAddress] = useState<string | null>(null)
+    const [windowDefined, setWindowDefined] = useState<boolean>(false);
+    const [address, setAddress] = useState<string | null>(null);
+    const [connected, setConnected] = useState<boolean>(false);
     const [isConnected, setIsConnected] = useState<boolean>(false);
-    //const [cid, setCid] = useState<string | null>(null)
-    //const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [cid, setCid] = useState<string | null>(null)
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const pathname = usePathname()
 
     
-   /* useEffect(() => {
+      useEffect(() => {
         if (typeof window !== 'undefined') {
         setWindowDefined(true);
         //if (window.aptos) {
@@ -37,17 +38,17 @@ const Navbar = () => {
         // }
         // console.log(window.aptos)
         }
-    }, [])*/
-    useEffect(() => {
+    }, [])
+    /*useEffect(() => {
         setIsConnected(walletManager.isWalletConnected());
         if (walletManager.isWalletConnected()) {
           setAddress(walletManager.getAddress());
         }
-      }, []);
+      }, []);*/
     
 
     
-    /*const getAptosWallet = () => {
+    const getAptosWallet = () => {
         if ('aptos' in window) {
           return window.aptos;
         } else {
@@ -67,6 +68,7 @@ const Navbar = () => {
     
           setAddress(account.address)
           setConnected(true);
+          localStorage.setItem('walletConnected', 'true');
     
         } catch (error) {
           // { code: 4001, message: "User rejected the request."}
@@ -77,28 +79,42 @@ const Navbar = () => {
 
     const handleDisconnect = async () => {
         const wallet: any = getAptosWallet()
-    
+        if(!wallet) return;
         await wallet.disconnect()
     
         setConnected(false);
+        localStorage.removeItem('walletConnected');
         setAddress(null)
         setIsPlaying(false)
         setCid(null)
-    }*/
+    }
 
     
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (connected) {
             // Fetch address when connected
             const wallet: any = getAptosWallet();
             if (!wallet) return;
 
+
             wallet.account().then((account: any) => {
                 setAddress(account.address);
             });
         }
-    }, [connected]);*/
+    }, [connected]);
+
+
+    useEffect(() => {
+      const isWalletConnected = localStorage.getItem('walletConnected');
+      if (isWalletConnected) {
+          setConnected(true);
+      }
+  }, []);
+
+  
+    /*
+    
     const handleConnectClick = async () => {
         const connected: boolean = await walletManager.connectWallet();
         if (connected) {
@@ -113,7 +129,7 @@ const Navbar = () => {
           setIsConnected(false);
           setAddress(null);
         }
-      };
+      };*/
 
     ///const address = walletManager.isWalletConnected() ? walletManager.getConnectedAddress() : null;
 
@@ -136,6 +152,7 @@ const Navbar = () => {
     const getColor = (path: string, content: string) => {
         return path === content ? '#FFF' : '#ffffff56'
     }
+    
     return (
         
         <Nav>
@@ -166,12 +183,18 @@ const Navbar = () => {
                 <Wrap2>
             <Wrap21>{abbreviatedAddress(address)}</Wrap21>
             <Wrap22>
-            {isConnected ? (
-              <DisconnectedButton onClick={handleDisconnect}>Disconnect</DisconnectedButton>
-            ) : (
-              <ConnectWalletButton onClick={handleConnectClick}>Connect Wallet</ConnectWalletButton>
-            )}
-          </Wrap22>
+                {windowDefined ? (
+                    connected ? (
+                         <DisconnectedButton onClick={handleDisconnect}>Disconnect</DisconnectedButton>
+                    ) : (
+                        <ConnectWalletButton onClick={handleConnectClick}>
+                            Connect Wallet
+                        </ConnectWalletButton>
+                    )
+                ) : (
+                    <div>Loading...</div>
+                )}
+            </Wrap22>
         </Wrap2>
             </Right>
         </Nav>
