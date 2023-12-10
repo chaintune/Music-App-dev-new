@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import search from '@assets/search.svg'
 import search_white from '@assets/search-white.svg'
-import {Nav, Left, Tab, Right, Wrap1, Wrap11, Wrap111, Wrap112, Wrap12, Wrap2, Wrap21, Wrap22, ConnectedText, ConnectWalletButton, DisconnectedButton} from "@styles/Navbar/style"
+import { Nav, Left, Tab, Right, Wrap1, Wrap11, Wrap111, Wrap112, Wrap12, Wrap2, Wrap21, Wrap22, ConnectedText, ConnectWalletButton, DisconnectedButton } from "@styles/Navbar/style"
 import { usePathname } from 'next/navigation'
 import { ChangeEvent, FormEvent, useEffect, useState, useRef } from 'react';
 import axios from 'axios'
@@ -70,7 +70,7 @@ const Navbar = () => {
           setAddress(account.address)
           setConnected(true);
           localStorage.setItem('walletConnected', 'true');
-    
+          localStorage.setItem('walletAddress', account.address);
         } catch (error) {
           // { code: 4001, message: "User rejected the request."}
           console.log(error)
@@ -85,6 +85,7 @@ const Navbar = () => {
     
         setConnected(false);
         localStorage.removeItem('walletConnected');
+        localStorage.removeItem('walletAddress');
         setAddress(null)
         setIsPlaying(false)
         setCid(null)
@@ -188,20 +189,22 @@ const Navbar = () => {
                     </Wrap12>
                 </Wrap1>
                 <Wrap2>
-            <Wrap21>{abbreviatedAddress(address)}</Wrap21>
-            <Wrap22>
-                {windowDefined ? (
-                    connected ? (
-                         <DisconnectedButton onClick={handleDisconnect}>Disconnect</DisconnectedButton>
-                    ) : (
-                        <ConnectWalletButton onClick={handleConnectClick}>
-                            Connect Wallet
-                        </ConnectWalletButton>
-                    )
+            {/* {address ? abbreviatedAddress(address) : 'Connect Wallet'} */}
+            {windowDefined ? (
+                connected ? (
+                        <Wrap21>{abbreviatedAddress(address)}</Wrap21>
                 ) : (
-                    <div>Loading...</div>
+                    <Wrap21>Connect Wallet</Wrap21>
+                )
+            ) : (
+                <Wrap21>Loading...</Wrap21>
+            )}
+            
+            { connected ? (
+                    <Wrap22 onClick={handleDisconnect} style={{backgroundColor: '#8d0303'}}><Image src={arrow} alt="" style={{width: '0.9vw', height: '0.9vw'}}/></Wrap22>
+                ) : (
+                    <Wrap22 onClick={handleConnectClick} style={{backgroundColor: '#24282D'}}><Image src={arrow} alt="" style={{width: '0.9vw', height: '0.9vw'}}/></Wrap22>
                 )}
-            </Wrap22>
         </Wrap2>
             </Right>
         </Nav>
