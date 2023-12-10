@@ -1,14 +1,21 @@
 'use client'
+
 import Image from 'next/image';
 import Search from '@assets/search.svg'
 import drop from '@assets/drop.svg'
 import { CardContainer2, Wrap7, Wrap1, Options, SearchBar, DropdownButton, DropdownContainer, DropdownContent, DropdownItem, DropdownIcon, Row, Title, TitleBlock, InfoBlock, SearchText1, SearchText2, Sno } from '@styles/playlist/style';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SearchEntry from '../SearchEntry/SearchEntry'
+import { album, song } from '@types';
+
+
 const options = ["Most Popular", "Most Recent", "Most Streamed"];
-const VotingCard = ({handleSearchClose}:any) => {
+
+
+const VotingCard = ({handleSearchClose, album}:{handleSearchClose: any, album: album}) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [songDurations, setSongDurations] = useState<Record<number, string>>({});
 
     const handleDropdownToggle = () => {
         setIsOpen(!isOpen);
@@ -18,6 +25,39 @@ const VotingCard = ({handleSearchClose}:any) => {
         setSelectedOption(option);
         setIsOpen(false);
     };
+
+    const getSongDuration = (songUrl: string) => {
+        return new Promise((resolve) => {
+            const audio = new Audio(songUrl);
+            audio.addEventListener('loadedmetadata', () => {
+                resolve(audio.duration);
+            });
+        });
+    };
+
+    const formatDuration = (seconds: number) => {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60);
+        const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+        return `${minutes}:${formattedSeconds}`;
+    }
+
+    // Function to fetch the duration of a song
+    const fetchSongDuration = async (songUrl: string, index: number) => {
+        // Fetch the duration of the song
+        const durationInSeconds = await getSongDuration(songUrl) as number; // Assuming this function returns the duration in seconds
+        const formattedDuration = formatDuration(durationInSeconds);
+        setSongDurations(prevDurations => ({ ...prevDurations, [index]: `${formattedDuration}` }));
+    };
+
+    // Effect to fetch durations when the component mounts or the album changes
+    useEffect(() => {
+        if (album.songs) {
+            album.songs.forEach((song, index) => {
+                fetchSongDuration(song.animation_url, index);
+            });
+        }
+    }, [album.songs]);
     
     return (
         <CardContainer2>
@@ -91,10 +131,18 @@ const VotingCard = ({handleSearchClose}:any) => {
                     </SearchText2>
                 </InfoBlock>
             </Row>
-            <SearchEntry sno="01" title="Feel it Still" artist="Portugal, The Men" album="Woodstock" updatedAt='2 Days Ago' duration='2:43' />
-            <SearchEntry sno="01" title="Feel it Still" artist="Portugal, The Men" album="Woodstock" updatedAt='2 Days Ago' duration='2:43' />
-            <SearchEntry sno="01" title="Feel it Still" artist="Portugal, The Men" album="Woodstock" updatedAt='2 Days Ago' duration='2:43' />
-            <SearchEntry sno="01" title="Feel it Still" artist="Portugal, The Men" album="Woodstock" updatedAt='2 Days Ago' duration='2:43' />
+            
+            { album.songs?.map((song, index) => (
+                <SearchEntry 
+                sno={`${index+1}`} 
+                title={song.name} 
+                artist={song.attributes[1].value} 
+                album={album.name as string} 
+                updatedAt={album.date as string} 
+                duration={songDurations[index] || 'Loading...'}
+                image={song.image}
+                />
+            ))}
         </CardContainer2>
     )
 }

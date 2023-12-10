@@ -5,13 +5,16 @@ import { VotingCard } from "@components";
 const Song_Page = () => {
       return (
             
-            <Layout>
-                  <div className="h-[70vh] overflow-y-scroll scroll-smooth">
-                        <PlaylistCard />
-                        <VotingCard />
-                        <PlaylistTable />
-                  </div>
-            </Layout>
+            // <Layout>
+            //       <div className="h-[70vh] overflow-y-scroll scroll-smooth">
+            //             <PlaylistCard />
+            //             <VotingCard />
+            //             <PlaylistTable />
+            //       </div>
+            // </Layout>
+            <div>
+                  
+            </div>
             
       );
 }

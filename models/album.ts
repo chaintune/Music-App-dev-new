@@ -36,7 +36,10 @@ const albumSchema = new Schema({
     creator: {
         type: String
     },
-    songs: [String],
+    songs: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Song'
+    }],
     artists: [String],
     date: {
         type: String,

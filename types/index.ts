@@ -35,7 +35,7 @@ export type artist =  {
     desc?: string;
     walletAddress?: string;
     date?: string;
-    albums?: string[];
+    albums?: album[];
     community?: string;
     earnings?: number;
     plays?: number;
@@ -60,7 +60,7 @@ export type album = {
     external_url?: string;
     desc?: string;
     creator?: string;
-    songs?: string[];
+    songs?: song[];
     artists?: string[];
     date?: string;
     properties?: props;

@@ -25,7 +25,7 @@ export const SongContainer = styled.div`
     font-family: Aileron;
 `;
 
-export const SongBanner = styled(NextImage)`
+export const SongBanner = styled.img`
     color: white;
     border-radius: 16px;
     width: 240px;
@@ -71,13 +71,13 @@ export const TopBar = styled.div`
 `
 
 export const AlbumButton = styled.button`
-    border-radius: 30px;
+    border-radius: 2.098vw;
     background: rgba(255, 255, 255, 0.10);
     color: white;
     display: inline-flex;
-    width: 60px;
-    height: 32px;
-    padding: 6px 12px;
+    /* width: 60px;
+    height: 32px; */
+    padding: 0px 12px;
     justify-content: center;
     align-items: center;
     gap: 10px;
