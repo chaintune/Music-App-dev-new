@@ -41,7 +41,7 @@ const Navbar = () => {
     useEffect(() => {
         setIsConnected(walletManager.isWalletConnected());
         if (walletManager.isWalletConnected()) {
-          setAddress(walletManager.getConnectedAddress());
+          setAddress(walletManager.getAddress());
         }
       }, []);
     
@@ -100,15 +100,15 @@ const Navbar = () => {
         }
     }, [connected]);*/
     const handleConnectClick = async () => {
-        const connected = await walletManager.connectWallet();
+        const connected: boolean = await walletManager.connectWallet();
         if (connected) {
           setIsConnected(true);
-          setAddress(walletManager.getConnectedAddress());
+          setAddress(walletManager.getAddress());
         }
       };
     
       const handleDisconnect = async () => {
-        const disconnected = await walletManager.disconnectWallet();
+        const disconnected: boolean = await walletManager.disconnectWallet();
         if (disconnected) {
           setIsConnected(false);
           setAddress(null);

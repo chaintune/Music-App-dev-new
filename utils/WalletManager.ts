@@ -1,49 +1,65 @@
 export class WalletManager {
-    private isConnected: boolean = false;
-    private connectedAddress: string | null = null;
-  
-    public async connectWallet(): Promise<boolean> {
-      try {
-        // @ts-ignore
-        const wallet = window?.aptos;
-        await wallet.connect();
-        this.isConnected = true;
-        // Fetch and store the connected address
-        const account = await wallet.account();
-        this.connectedAddress = account?.address || null;
-        console.log('Wallet connected successfully');
-        return true;
-      } catch (error) {
-        console.error('Error connecting to the wallet:', error);
-        this.isConnected = false;
-        this.connectedAddress = null;
-        return false;
-      }
-    }
-  
-    public async disconnectWallet(): Promise<boolean> {
-      try {
-        // @ts-ignore
-        const wallet = window?.aptos;
-        await wallet.disconnect();
-        this.isConnected = false;
-        this.connectedAddress = null;
-        console.log('Wallet disconnected successfully');
-        return true;
-      } catch (error) {
-        console.error('Error disconnecting from the wallet:', error);
-        return false;
-      }
-    }
-  
-    public isWalletConnected(): boolean {
-      return this.isConnected;
-    }
-  
-    public getConnectedAddress(): string | null {
-      return this.connectedAddress;
+  private isConnected: boolean = false;
+  private connectedAddress: string | null = null;
+
+  constructor() {
+    this.loadState();
+  }
+
+  private saveState() {
+    localStorage.setItem("walletConnected", this.isConnected.toString());
+    localStorage.setItem("connectedAddress", this.connectedAddress || "");
+  }
+
+  private loadState() {
+    if (typeof localStorage !== 'undefined') {
+      this.isConnected = localStorage.getItem("walletConnected") === "true";
+      this.connectedAddress = localStorage.getItem("connectedAddress");
     }
   }
+  
+
+  public async connectWallet(): Promise<boolean> {
+    try {
+      // @ts-ignore
+      const wallet = window?.aptos;
+      await wallet.connect();
+      const account = await wallet.account();
+      console.log(account);
+      this.connectedAddress = account.address;
+      this.isConnected = true;
+      console.log("Wallet connected successfully");
+      return true;
+    } catch (error) {
+      console.error("Error connecting to the wallet:", error);
+      this.isConnected = false;
+      return false;
+    }
+  }
+
+  public async disconnectWallet(): Promise<boolean> {
+    try {
+      // @ts-ignore
+      const wallet = window?.aptos;
+      await wallet.disconnect();
+      this.isConnected = false;
+      this.connectedAddress = "";
+      console.log("Wallet disconnected successfully");
+      return true;
+    } catch (error) {
+      console.error("Error disconnecting from the wallet:", error);
+      return false;
+    }
+  }
+
+  public getAddress(): string {
+    return this.connectedAddress || "";
+  }
+
+  public isWalletConnected(): boolean {
+    return this.isConnected;
+  }
+}
   
 
 
