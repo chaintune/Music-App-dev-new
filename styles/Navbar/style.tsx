@@ -108,12 +108,12 @@ export const Wrap22 = styled.div`
     width: 3.357vw;
 height: 5.581vh;
 font-size: 1.119vw;
-font-color: white;
+color: white;
 border-radius: 3.497vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #24282D;
+    
 border: 1px solid linear-gradient(163.58deg, rgba(255, 255, 255, 0.06) -2.71%, rgba(255, 255, 255, 0) 102.71%);;
 `
 
