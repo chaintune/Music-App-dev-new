@@ -21,6 +21,7 @@ export default function Home() {
 
 
     return (
+    
         <Layout>
             <div style={{padding: '0vh 2.8vw', display: 'flex', justifyContent: 'space-between'}}>
                 <div className="flex justify-between flex-col" style={{ width: '70.769vw', height: '70vh', overflowY: 'auto', gap: '1.860vh', scrollBehavior: 'smooth'}}>
@@ -38,5 +39,6 @@ export default function Home() {
                 </div>
             </div>
         </Layout>
+    
     );
 }

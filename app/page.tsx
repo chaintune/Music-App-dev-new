@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useContext, useEffect } from 'react'
 import { Layout, Community, MixedCard, NewLaunch, RecPlay, DiscCard } from '@components'
 import { Cont, Left, Ele3, Ele31 } from '@styles/Home/style'

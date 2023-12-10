@@ -107,6 +107,8 @@ color: #FFFFFF;
 export const Wrap22 = styled.div`
     width: 3.357vw;
 height: 5.581vh;
+font-size: 1.119vw;
+font-color: white;
 border-radius: 3.497vw;
     display: flex;
     justify-content: center;
@@ -114,3 +116,20 @@ border-radius: 3.497vw;
     background: #24282D;
 border: 1px solid linear-gradient(163.58deg, rgba(255, 255, 255, 0.06) -2.71%, rgba(255, 255, 255, 0) 102.71%);;
 `
+
+
+export const ConnectedText = styled.div`
+    color: green; /* Example color */
+    font-size: 16px; /* Example font size */
+    /* Add other styles as needed */
+`;
+
+export const ConnectWalletButton = styled.button`
+    color: white; 
+    font-size: 12px;
+`;
+
+export const DisconnectedButton = styled.button`
+    color: red;
+    font-size: 10px; 
+`;
