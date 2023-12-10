@@ -14,7 +14,7 @@ export const CardContainer = styled.div`
   align-items: flex-start;
 `;
 
-export const CardImage = styled(Image)`
+export const CardImage = styled.img`
   width: 10rem; 
   height: 10rem; 
   border-radius: 0.25rem; 
