@@ -29,6 +29,7 @@ import { FaPause } from "react-icons/fa6";
 import { FaVolumeMute } from "react-icons/fa";
 import { GoMute } from "react-icons/go";
 import './PlaySong.css'
+import Pocket from '@assets/drop.svg'
 
 
 
@@ -36,25 +37,167 @@ import './PlaySong.css'
 
 
 const playSong = () => {
+
+
     const [cid, setCid] = useState<string | null>(null)
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const audioRef = useRef<HTMLAudioElement>(null);
     const [progress, setProgress] = useState(0);
-    const [volvalue, setvolvalue] = useState(0.5);
+    const [volvalue, setvolvalue] = useState(0);
     const [timemint, setmint] = useState(0);
     const [timesec, setsec] = useState<string | null>('00');
     const [Ismute, setIsmte] = useState<boolean>(true);
+    const [currentSong, setCurrentSong] = useState(0);
+    const [title, setTitle] = useState('first');
+    const [src, setSrc] = useState('https://gateway.pinata.cloud/ipfs/QmWMhDYHBnBWZL37zavxgwvyQ1m6FYS9ZHBDTcgaDBfiKW')
+    const [artist, setArtist] = useState('artist')
+    const [img, setImg] = useState(bg)
 
-    var durationmint = '0'
-    var durationsec = '00'
+    const [durationmin, setDurationmint] = useState('00')
+    const [durationsecond, setDurationsecond] = useState('00')
+    // componentDidMount() {
+    //     const getDbAnswer = src;
+    //     if (getDbAnswer) {
+    //       this.setState({ fav: true })
+    //     else
+    //       this.setState({ fav: false })
+    //  }
+    const tracks =
+        [
+            // {
+            // 	title: 'Eyes to the sky',
+            // 	artist: 'Jon Bellion',
+
+            // },
+            {
+                name: 'Lazarus',
+                author: 'Dave',
+                source: 'https://gateway.pinata.cloud/ipfs/QmWMhDYHBnBWZL37zavxgwvyQ1m6FYS9ZHBDTcgaDBfiKW',
+                Image: bg
+                // img_src: LazarusImg,
+                // src: Lazarus,
+            },
+            {
+                name: 'Yosemite',
+                author: 'Travis scott',
+                // img_src: YosemiteImg,
+                source: 'https://gateway.pinata.cloud/ipfs/QmbLTnRRGJmuiBy1QkD849C6QuqWUJ6vD8bVpZTM7EW8po',
+                Image: Pocket
+            },
+
+            {
+                name: 'Dark paradise',
+                author: 'Lana Del Ray',
+                // img_src: AudioImg,
+                source: 'https://gateway.pinata.cloud/ipfs/Qmd2j7ZFWFW7je66XMUwNU5z4TruVNcNsx3Hqv7LeFpHjc',
+                Image: Pocket
+            },
+            {
+                name: 'Lazarus',
+                author: 'Dave',
+                source: 'https://gateway.pinata.cloud/ipfs/QmWMhDYHBnBWZL37zavxgwvyQ1m6FYS9ZHBDTcgaDBfiKW',
+                Image: Pocket
+                // img_src: LazarusImg,
+                // src: Lazarus,
+            },
+            {
+                name: 'Dark paradise',
+                author: 'Lana Del Ray',
+                // img_src: AudioImg,
+                source: 'https://gateway.pinata.cloud/ipfs/Qmd2j7ZFWFW7je66XMUwNU5z4TruVNcNsx3Hqv7LeFpHjc',
+                Image: Pocket
+            },
+        ]
+
+        ;
+
+    // State
+    const [trackIndex, setTrackIndex] = useState(2);
+    // const [trackProgress, setTrackProgress] = useState(0);
+
+    const toPrevTrack = () => {
+        if (trackIndex - 1 < 0) {
+            setTrackIndex(tracks.length - 1);
+        } else {
+            setTrackIndex(trackIndex - 1);
+        }
+    }
+
+    const toNextTrack = () => {
+        if (trackIndex < tracks.length - 1) {
+            setTrackIndex(trackIndex + 1);
+        } else {
+            setTrackIndex(0);
+        }
+    }
+
+    useEffect(() => {
+        // console.log(trackIndex)
+        const { name, author, source, Image } = tracks[trackIndex];
+        setSrc(source);
+        setTitle(name);
+        setArtist(author);
+
+        // console.log(name, author, source, trackIndex)
+        setImg(Image)
+
+        setIsPlaying(false)
+        setProgress(0)
+        setsec('00')
+        setmint(0)
+        if (audioRef.current) {
+            audioRef.current.src = source
+        }
+
+    }, [trackIndex])
+
+    // useEffect(() => {
+    //     var durationmint = (parseInt(audioRef.current.duration.toFixed(0)) / 60).toFixed(0);
+    //     var durationsec = `${parseInt(audioRef.current.duration.toFixed(0)) % 60}`;
+    //     const dur = parseInt(durationsec)
+    //     durationsec = dur < 10 ? `0${dur}` : `${dur}`;
+    //     setDurationmint(durationmint);
+    //     setDurationsecond(durationsec);
+    // }, [audioRef.current.src])
+    useEffect(() => {
+        const audioElement = audioRef.current;
+        if (audioElement) {
+            const updateDuration = () => {
+                let durationmint = (parseInt(audioElement.duration.toFixed(0)) / 60).toFixed(0);
+                let durationsec = `${parseInt(audioElement.duration.toFixed(0)) % 60}`;
+                const dur = parseInt(durationsec)
+                durationsec = dur < 10 ? `0${dur}` : `${dur}`;
+                setDurationmint(durationmint);
+                setDurationsecond(durationsec);
+            };
+
+            audioElement.addEventListener('loadedmetadata', updateDuration);
+
+            // Cleanup function
+            return () => {
+                audioElement.removeEventListener('loadedmetadata', updateDuration);
+            };
+        }
+    }, [audioRef.current?.src]);
+    // const audioRef = useRef(new Audio(src));
+
+
 
 
     const [volume, setVolume] = useState(50);
-    if (audioRef.current) {
-        durationmint = (parseInt(audioRef.current.duration.toFixed(0)) / 60).toFixed(0);
-        durationsec = `${parseInt(audioRef.current.duration.toFixed(0)) % 60}`;
-        const dur = parseInt(durationsec)
-        durationsec = dur < 10 ? `0${dur}` : `${dur}`;
+    const handleDuration = () => {
+        if (audioRef.current) {
+
+            var durationmint = '0'
+            var durationsec = '00'
+            durationmint = (parseInt(audioRef.current.duration.toFixed(0)) / 60).toFixed(0);
+            durationsec = `${parseInt(audioRef.current.duration.toFixed(0)) % 60}`;
+            const dur = parseInt(durationsec)
+            durationsec = dur < 10 ? `0${dur}` : `${dur}`;
+            setDurationmint(durationmint);
+            setDurationsecond(durationsec);
+
+        }
     }
 
     const handleVolumeChange = (e) => {
@@ -89,9 +232,10 @@ const playSong = () => {
         }
     };
 
-    useEffect(() => {
-        setIsPlaying(false);
-    }, [cid]);
+    // useEffect(() => {
+    //     setIsPlaying(false);
+    // }, [cid]);
+
     // const handleVolumeChange = (e) => {
     //     if (audioRef.current) {
     //         const newVolume = parseFloat(e.target.value);
@@ -185,37 +329,37 @@ const playSong = () => {
                     <Songing>
                         <SongDetailsContainer>
                             <div>
-                                <SongImage src={bg} alt='' />
+                                <SongImage src={img} alt='' />
                             </div>
                             <SongInfo>
-                                <Title>Left Hand Free</Title>
-                                <Artist>alt-J</Artist>
+                                <Title>{title}</Title>
+                                <Artist>{artist}</Artist>
                             </SongInfo>
                         </SongDetailsContainer>
 
                         <ControlsContainer style={{}}>
                             <Duration style={{ marginRight: '9vw', opacity: '0.4' }}>{timemint}:{timesec}</Duration>
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-                                <ControlButton style={{ height: '40px', width: '40px' }}>
+                                <ControlButton style={{ height: '40px', width: '40px' }} >
                                     <IoMdShuffle style={{ color: 'white', height: '15px', width: '40px' }} />
                                 </ControlButton>
-                                <ControlButton style={{ height: '45px', width: '45px', backgroundColor: '#2b2b2b' }}>
+                                <ControlButton onClick={toPrevTrack} style={{ height: '45px', width: '45px', backgroundColor: '#2b2b2b' }}    >
                                     <IoMdSkipBackward style={{ color: 'white', height: '18px', width: '40px' }} />
                                 </ControlButton>
 
-                                <PlayPauseButton  onClick={togglePlayPause} >
+                                <PlayPauseButton onClick={togglePlayPause} >
                                     <IconContext.Provider value={{ style: { fontSize: '20px' } }}>
                                         {/* <FaPlay /> */}
                                         <audio ref={audioRef} controls style={{ display: 'none' }}>
                                             {/* <source src={`https://gateway.pinata.cloud/ipfs/${cid}`} type="audio/mp3" /> */}
-                                            <source src={`https://gateway.pinata.cloud/ipfs/QmYqqLFV7NW9vDRdVQi7Yp7mug16Dpeb7qUFHtCQvFX5KK`} type="audio/mp3" />
+                                            <source src={src} type="audio/mp3" />
 
 
                                         </audio>
 
 
 
-                                        <div >
+                                        <div>
                                             {isPlaying ? <FaPause style={{ height: '18px' }} /> : <FaPlay style={{ height: '18px' }} />}
                                         </div>
 
@@ -224,15 +368,15 @@ const playSong = () => {
 
                                 </PlayPauseButton>
 
-                                <ControlButton style={{ height: '45px', width: '45px', backgroundColor: '#2b2b2b' }}>
+                                <ControlButton onClick={toNextTrack} style={{ height: '45px', width: '45px', backgroundColor: '#2b2b2b' }}>
                                     <IoMdSkipForward style={{ color: 'white', height: '18px', width: '40px' }} />
                                 </ControlButton>
-                                <ControlButton style={{ height: '20px', width: '45px' }}>
+                                <ControlButton style={{ height: '20px', width: '45px' }} >
                                     <CiRepeat style={{ color: 'white', height: '15px', width: '45px' }} />
 
                                 </ControlButton>
                             </div>
-                            <Duration style={{ marginLeft: '9vw', opacity: '0.4' }}>{durationmint}:{durationsec}</Duration>
+                            <Duration style={{ marginLeft: '9vw', opacity: '0.4' }}>{durationmin}:{durationsecond}</Duration>
                         </ControlsContainer>
                         <Volume>
                             <QueueMusic>
@@ -275,64 +419,3 @@ const playSong = () => {
 }
 
 export default playSong;
-
-// {/* <div className=''>
-// <div className='container mt-4 flex mx-auto items-center rounded-t-3xl relative bg-gradient-to-b from-zinc-900 to-neutral-800 shadow border border-white border-opacity-5 backdrop-blur-[120px]' style={{ height: "120px", width: "1415px" }}>
-
-// <div className='flex items-center'>
-// <div className="mx-5 absolute bottom-10" style={{ height: "96px", width: "96px" }}>
-// <Image className="rounded-xl" src={bg} style={{height:"100%",width:"100%"}} alt=''/>
-// </div>
-// <div className='absolute left-32'>
-// <p className='text-white font-medium'>Left Hand Free</p>
-// <p className='text-white font-light'>alt-J</p>
-// </div>
-// </div>
-
-// <div className='container flex justify-center items-center'>
-// <span className='text-white'>2.56</span>
-
-// <div className='flex items-center w-72 h-12 justify-between mx-10'>
-// <button>
-//   <div className='container bg-slate-500 rounded-full h-9 w-9' >
-//       <Image src={pause} alt="shuffle" />
-//   </div>
-
-// </button>
-// <button>
-//   <div className='container bg-slate-500 rounded-full h-12 w-12' >
-//       <Image src={pause} alt="skip" />
-//   </div>
-// </button>
-
-// <button>
-//   <div className='flex items-center justify-center container bg-white rounded-full h-12 w-12' >
-
-//       <audio ref={audioRef} controls style={{ display: 'none' }}>
-//           {/* <source src={`https://gateway.pinata.cloud/ipfs/${cid}`} type="audio/mp3" /> */}
-//           <source src={`https://gateway.pinata.cloud/ipfs/Qmd2j7ZFWFW7je66XMUwNU5z4TruVNcNsx3Hqv7LeFpHjc`} type="audio/mp3" />
-
-
-//       </audio>
-
-
-//       <Image onClick={togglePlayPause} src={isPlaying ? pause : skipprev} alt="pause" />
-//   </div>
-// </button>
-// <button>
-//   <div className='container bg-slate-500 rounded-full h-12 w-12' >
-//   </div>
-// </button>
-// <button>
-//   <div className='container bg-slate-500 rounded-full h-9 w-9' >
-//       <Image src={pause} alt="skipprev" />
-//   </div>
-// </button>
-// </div>
-
-// <span className='text-white'>2.56</span>
-// </div>
-
-// </div>
-
-// </div> */}
