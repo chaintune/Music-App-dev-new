@@ -11,9 +11,10 @@ interface TableProps {
     album: string;
     updatedAt: string;
     duration: string;
+    image: string;
 }
 
-const VotingCard: React.FC<TableProps> = ({ sno, title, artist, album, updatedAt, duration }) => {
+const VotingCard: React.FC<TableProps> = ({ sno, title, artist, album, updatedAt, duration, image }) => {
 
     const initialState = {
         voted : false,
@@ -56,7 +57,7 @@ const VotingCard: React.FC<TableProps> = ({ sno, title, artist, album, updatedAt
                     </SearchText2>
                 </Sno>
                 <Title>
-                    <Thumbnail src={thumbnail} alt='' />
+                    <Thumbnail src={image} alt='' />
                     <Wrap6>
                         <SearchText1>
                             {title}
@@ -85,11 +86,11 @@ const VotingCard: React.FC<TableProps> = ({ sno, title, artist, album, updatedAt
                     </Wrap10>
                 </SearchText2>
                 <SearchText2>
-                    <Wrap10>
+                    {/* <Wrap10>
                                 <div onClick={toggleVote} className="px-4 py-3 text-xs text-white rounded-full bg-gray-700">
                                     {state.status} 
                                 </div>
-                    </Wrap10>
+                    </Wrap10> */}
                 </SearchText2>
             </InfoBlock>
         </Row>
