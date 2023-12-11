@@ -6,6 +6,7 @@ import { song } from '@types'
 import { AlbumCard, ArtistCard, Community, CurrentSong, Layout, MixedCard } from '@components';
 import DataContext from '@context/dataContext';
 import { useRouter } from 'next/navigation';
+import VotingCard from '@components/SearchPlaylist/SearchPlaylist';
 
 const SongList = ({ data, search }: { data: song[]; search: string }) => {
 
@@ -13,6 +14,7 @@ const SongList = ({ data, search }: { data: song[]; search: string }) => {
         if(search === '') return song
         else if(song.name.toLowerCase().includes(search.toLowerCase())) return song
     })
+
 
     return (
         <div>
@@ -32,9 +34,9 @@ const Search = () => {
         router.push(`/album/${id}`);
     }
 
-    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value)
-    }
+    /*const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value);
+    };*/
 
     let data1: any[] = [];
     artists.map(artist => {
@@ -69,7 +71,8 @@ const Search = () => {
         <Layout>
             <div style={{padding: '0vh 2.8vw', display: 'flex', justifyContent: 'space-between'}}>
                 <div className="flex justify-between flex-col" style={{ width: '70.769vw', height: '70vh', overflowY: 'auto', gap: '1.860vh', scrollBehavior: 'smooth'}}>
-                    <CurrentSong />
+                    {/*<VotingCard setSearchProp = {setSearch}/>*/}
+                    <CurrentSong search={search} />
                     <Community 
                     cardComponent={(data) => <ArtistCard {...data} />} 
                     data={data1}

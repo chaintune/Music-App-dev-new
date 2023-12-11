@@ -4,11 +4,13 @@ import Search from '@assets/search.svg'
 import drop from '@assets/drop.svg'
 import { CardContainer2, Wrap7, Wrap1, Options, SearchBar, DropdownButton, DropdownContainer, DropdownContent, DropdownItem, DropdownIcon, Row, Title, TitleBlock, InfoBlock, SearchText1, SearchText2, Sno } from '@styles/playlist/style';
 import { useState } from 'react';
+import CurrentSong from '@components/CurrentSong/CurrentSong';
 import SearchEntry from '../SearchEntry/SearchEntry'
 const options = ["Most Popular", "Most Recent", "Most Streamed"];
-const VotingCard = ({handleSearchClose}:any) => {
+const VotingCard = ({handleSearchClose }:any) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [search, setSearch] = useState<string>('');
 
     const handleDropdownToggle = () => {
         setIsOpen(!isOpen);
@@ -18,15 +20,24 @@ const VotingCard = ({handleSearchClose}:any) => {
         setSelectedOption(option);
         setIsOpen(false);
     };
+
+    const handleSearch = (text: string) => {
+        setSearch(text);
+        console.log('Search value in VotingCard:', text)
+        //setSearchProp(text);
+    }
     
     return (
         <CardContainer2>
             <Wrap1>
                 <Wrap7>
                     <Options src={Search} alt='' />
-                    <SearchBar placeholder='Search...' />
+                    <SearchBar 
+                    placeholder='Search...'
+                    value={search}
+                    onChange={(e) => handleSearch(e.target.value)} />
                 </Wrap7>
-               
+                <CurrentSong search={search}/>
                 <DropdownContainer>
                     <DropdownButton onClick={handleDropdownToggle}>Sort by: {selectedOption || 'Select'} <DropdownIcon src={drop} alt='' /></DropdownButton>
                     {isOpen ? (<DropdownContent>
