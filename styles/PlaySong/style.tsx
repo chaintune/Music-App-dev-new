@@ -45,7 +45,7 @@ export const Songing = styled.div`
     `
   ;
 
-export const SongImage = styled(Image)`
+export const SongImage = styled.img`
   height: 96px;
   width: 96px;
   border-radius: 10px;

@@ -30,6 +30,8 @@ import { FaVolumeMute } from "react-icons/fa";
 import { GoMute } from "react-icons/go";
 import './PlaySong.css'
 import Pocket from '@assets/drop.svg'
+import { song } from '@types'
+import { useParams } from 'next/navigation'
 
 
 
@@ -55,6 +57,114 @@ const playSong = () => {
 
     const [durationmin, setDurationmint] = useState('00')
     const [durationsecond, setDurationsecond] = useState('00')
+
+    const [tracks, setTracks] = useState<any[]>([])
+    const params = useParams()
+
+    useEffect(() => {
+        const getAlbumDetails = async () => {
+            const response = await fetch(`/api/album/${params.id}`)
+
+            const data = await response.json()
+            console.log(data.songs)
+            setTracks(data.songs)
+        }
+
+        if(params.id) getAlbumDetails()
+        else{
+            setTracks([
+                // {
+                // 	title: 'Eyes to the sky',
+                // 	artist: 'Jon Bellion',
+    
+                // },
+                {
+                    name: 'Lazarus',
+                    source: 'https://gateway.pinata.cloud/ipfs/QmWMhDYHBnBWZL37zavxgwvyQ1m6FYS9ZHBDTcgaDBfiKW',
+                    Image: bg,
+                    attributes: [
+                        {
+                            trait_type: 'Genre',
+                            value: 'Pop'
+                        },
+                        {
+                            trait_type: 'Artist',
+                            value: 'Dave'
+                        }
+                    ]
+                    // img_src: LazarusImg,
+                    // src: Lazarus,
+                },
+                {
+                    name: 'Yosemite',
+                    // img_src: YosemiteImg,
+                    source: 'https://gateway.pinata.cloud/ipfs/QmbLTnRRGJmuiBy1QkD849C6QuqWUJ6vD8bVpZTM7EW8po',
+                    Image: Pocket,
+                    attributes: [
+                        {
+                            trait_type: 'Genre',
+                            value: 'Pop'
+                        },
+                        {
+                            trait_type: 'Artist',
+                            value: 'Travis scott'
+                        }
+                    ]
+                },
+    
+                {
+                    name: 'Dark paradise',
+                    // img_src: AudioImg,
+                    source: 'https://gateway.pinata.cloud/ipfs/Qmd2j7ZFWFW7je66XMUwNU5z4TruVNcNsx3Hqv7LeFpHjc',
+                    Image: Pocket,
+                    attributes: [
+                        {
+                            trait_type: 'Genre',
+                            value: 'Pop'
+                        },
+                        {
+                            trait_type: 'Artist',
+                            value: 'Lana del ray'
+                        }
+                    ]
+                },
+                {
+                    name: 'Lazarus',
+                    source: 'https://gateway.pinata.cloud/ipfs/QmWMhDYHBnBWZL37zavxgwvyQ1m6FYS9ZHBDTcgaDBfiKW',
+                    Image: Pocket,
+                    attributes: [
+                        {
+                            trait_type: 'Genre',
+                            value: 'Pop'
+                        },
+                        {
+                            trait_type: 'Artist',
+                            value: 'Dave'
+                        }
+                    ]
+                    // img_src: LazarusImg,
+                    // src: Lazarus,
+                },
+                {
+                    name: 'Dark paradise',
+                    // img_src: AudioImg,
+                    source: 'https://gateway.pinata.cloud/ipfs/Qmd2j7ZFWFW7je66XMUwNU5z4TruVNcNsx3Hqv7LeFpHjc',
+                    Image: Pocket,
+                    attributes: [
+                        {
+                            trait_type: 'Genre',
+                            value: 'Pop'
+                        },
+                        {
+                            trait_type: 'Artist',
+                            value: 'Lana del ray'
+                        }
+                    ]
+                },
+            ])
+        }
+    }, [])
+
     // componentDidMount() {
     //     const getDbAnswer = src;
     //     if (getDbAnswer) {
@@ -62,54 +172,10 @@ const playSong = () => {
     //     else
     //       this.setState({ fav: false })
     //  }
-    const tracks =
-        [
-            // {
-            // 	title: 'Eyes to the sky',
-            // 	artist: 'Jon Bellion',
+    // const tracks =
+        
 
-            // },
-            {
-                name: 'Lazarus',
-                author: 'Dave',
-                source: 'https://gateway.pinata.cloud/ipfs/QmWMhDYHBnBWZL37zavxgwvyQ1m6FYS9ZHBDTcgaDBfiKW',
-                Image: bg
-                // img_src: LazarusImg,
-                // src: Lazarus,
-            },
-            {
-                name: 'Yosemite',
-                author: 'Travis scott',
-                // img_src: YosemiteImg,
-                source: 'https://gateway.pinata.cloud/ipfs/QmbLTnRRGJmuiBy1QkD849C6QuqWUJ6vD8bVpZTM7EW8po',
-                Image: Pocket
-            },
-
-            {
-                name: 'Dark paradise',
-                author: 'Lana Del Ray',
-                // img_src: AudioImg,
-                source: 'https://gateway.pinata.cloud/ipfs/Qmd2j7ZFWFW7je66XMUwNU5z4TruVNcNsx3Hqv7LeFpHjc',
-                Image: Pocket
-            },
-            {
-                name: 'Lazarus',
-                author: 'Dave',
-                source: 'https://gateway.pinata.cloud/ipfs/QmWMhDYHBnBWZL37zavxgwvyQ1m6FYS9ZHBDTcgaDBfiKW',
-                Image: Pocket
-                // img_src: LazarusImg,
-                // src: Lazarus,
-            },
-            {
-                name: 'Dark paradise',
-                author: 'Lana Del Ray',
-                // img_src: AudioImg,
-                source: 'https://gateway.pinata.cloud/ipfs/Qmd2j7ZFWFW7je66XMUwNU5z4TruVNcNsx3Hqv7LeFpHjc',
-                Image: Pocket
-            },
-        ]
-
-        ;
+    //     ;
 
     // State
     const [trackIndex, setTrackIndex] = useState(2);
@@ -132,24 +198,28 @@ const playSong = () => {
     }
 
     useEffect(() => {
-        // console.log(trackIndex)
-        const { name, author, source, Image } = tracks[trackIndex];
-        setSrc(source);
-        setTitle(name);
-        setArtist(author);
-
-        // console.log(name, author, source, trackIndex)
-        setImg(Image)
-
-        setIsPlaying(false)
-        setProgress(0)
-        setsec('00')
-        setmint(0)
-        if (audioRef.current) {
-            audioRef.current.src = source
+        if (tracks.length > 0 && trackIndex < tracks.length) {
+            const t = tracks[trackIndex];
+            if (t) {
+                const name = t.name;
+                const source = t.animation_url;
+                const Image = t.image;
+                const author = t.attributes[1].value;
+                setSrc(source);
+                setTitle(name);
+                setArtist(author);
+                setImg(Image);
+    
+                setIsPlaying(false);
+                setProgress(0);
+                setsec('00');
+                setmint(0);
+                if (audioRef.current) {
+                    audioRef.current.src = source;
+                }
+            }
         }
-
-    }, [trackIndex])
+    }, [trackIndex, tracks]);
 
     // useEffect(() => {
     //     var durationmint = (parseInt(audioRef.current.duration.toFixed(0)) / 60).toFixed(0);
